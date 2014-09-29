@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-09-28T16:10:18.091Z</updated>
+  <updated>2014-09-29T02:43:52.990Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -19,12 +19,10 @@
     <link href="http://alonprince.github.io/2014/09/28/npm%E7%BD%91%E9%80%9F%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     <id>http://alonprince.github.io/2014/09/28/npm网速慢的解决办法/</id>
     <published>2014-09-28T15:22:31.000Z</published>
-    <updated>2014-09-28T15:42:40.000Z</updated>
+    <updated>2014-09-29T02:43:41.000Z</updated>
     <content type="html"><![CDATA[<p>国内经常会遇到npm特别慢的情况，可以通过下面的方式，更改npm的镜像</p>
 <h3 id="通过下面命令设置镜像">通过下面命令设置镜像</h3>
-<blockquote>
-<p>npm config set registry <a href="http://r.cnpmjs.org" target="_blank" rel="external">http://r.cnpmjs.org</a></p>
-</blockquote>
+<p><code>npm config set registry http://r.cnpmjs.org</code></p>
 <p>国内镜像：</p>
 <blockquote>
 <p><a href="http://r.cnpmjs.org" target="_blank" rel="external">http://r.cnpmjs.org</a><br><a href="http://registry.cnpmjs.org" target="_blank" rel="external">http://registry.cnpmjs.org</a><br><a href="http://registry.npm.taobao.org" target="_blank" rel="external">http://registry.npm.taobao.org</a></p>
@@ -48,13 +46,14 @@
     <summary type="html">
     <![CDATA[<p>国内经常会遇到npm特别慢的情况，可以通过下面的方式，更改npm的镜像</p>
 <h3 id="通过下面命令设置镜像">通过下面命令设置镜像</h3>
-<blockquote>
-<p>npm config set registry <a href="http://r.cnp]]>
+<p><code>npm config set registry http://r.cnpmjs.org</code></]]>
     </summary>
     
       <category term="npm" scheme="http://alonprince.github.io/tags/npm/"/>
     
       <category term="nodejs" scheme="http://alonprince.github.io/tags/nodejs/"/>
+    
+      <category term="技术" scheme="http://alonprince.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   

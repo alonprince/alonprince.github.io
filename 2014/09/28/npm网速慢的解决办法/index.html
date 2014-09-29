@@ -64,6 +64,11 @@
                             <ul>
                                 <div class="mp-scroll">
                                 
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/技术/">&nbsp;&nbsp;&nbsp;技术</a>
+                                    <small>1</small>
+                                </li>
+                                
                                 </div>
                             </ul>
                         </div>
@@ -96,16 +101,6 @@
                         </div>
                     </li>
                     
-                    <li>
-                        <a class="fa fa-weibo" href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;Weibo Show</a>
-
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-weibo"></i>
-                                Weibo Show</h2>
-                            <a class="mp-back" href="#">back</a>
-                        </div>
-                    </li>
-                    
                     <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
                     <li><a class="fa fa-github" href="https://github.com/alonprince">&nbsp;&nbsp;&nbsp;Github</a></li>
 
@@ -118,6 +113,8 @@
                 
                     <a  data-pjax href="/2014/09/28/npm网速慢的解决办法/">npm网速慢的解决办法</a>
                 
+                
+                    <a data-pjax href="/categories/技术/">&nbsp;&nbsp;技术</a>
                 
                 
                     <a data-pjax href="/tags/nodejs/">&nbsp;&nbsp;nodejs</a>
@@ -181,9 +178,7 @@
         <section class="post-content">
             <p>国内经常会遇到npm特别慢的情况，可以通过下面的方式，更改npm的镜像</p>
 <h3 id="通过下面命令设置镜像">通过下面命令设置镜像</h3>
-<blockquote>
-<p>npm config set registry <a href="http://r.cnpmjs.org" target="_blank" rel="external">http://r.cnpmjs.org</a></p>
-</blockquote>
+<p><code>npm config set registry http://r.cnpmjs.org</code></p>
 <p>国内镜像：</p>
 <blockquote>
 <p><a href="http://r.cnpmjs.org" target="_blank" rel="external">http://r.cnpmjs.org</a><br><a href="http://registry.cnpmjs.org" target="_blank" rel="external">http://registry.cnpmjs.org</a><br><a href="http://registry.npm.taobao.org" target="_blank" rel="external">http://registry.npm.taobao.org</a></p>
