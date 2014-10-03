@@ -207,9 +207,8 @@
 <p>当然在实际工作中，有些文件是不需要提交到git的</p>
 <p>你可以在当前目录中新建一个<code>.gitignore</code>文件</p>
 <p>在里面添加你不需要监控的文件</p>
-<blockquote>
-<p>node_modules/           //node的包，不需要传上去，文件夹后面加一个/，代表该文件夹被忽略<br>/test                    //代表根目录下的test文件被忽略<br>.DS_store                 //代表.DS_store被忽略</p>
-</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">node_modules/           <span class="comment">//node的包，不需要传上去，文件夹后面加一个/，代表该文件夹被忽略</span></div><div class="line">/test					<span class="comment">//代表根目录下的test文件被忽略</span></div><div class="line">.DS_store 				<span class="comment">//代表.DS_store被忽略</span></div></pre></td></tr></table></figure>
+
 <p>查看当前git的状态可以使用<code>git status</code></p>
 <p>如果你没有添加上面的.gitignore的话，输入<code>git status</code>，git就会用红色高亮告诉你这几个文件是没有被加入git的监控中的，如果需要就使用<code>git add &lt;filename&gt;</code>来添加<br>加了.gitignore后，就不会再提示</p>
 <h3 id="提交代码">提交代码</h3>
