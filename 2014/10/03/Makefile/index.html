@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Tag: npm | _Phishing</title>
+  <title>Makefile的简单应用 | _Phishing</title>
   <meta name="description" content="Phishing's blog" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -157,7 +157,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">Makefile的简单应用</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -176,107 +176,63 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/nodejs/' style='color:#D5D5D5'>nodejs</a>
+                      
+                      <a data-pjax href='/tags/npm/' style='color:#D5D5D5'>npm</a>
+                      
+                      <a data-pjax href='/tags/linux/' style='color:#D5D5D5'>linux</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Makefile的简单应用</h1>
 
-    
-    <article class="post">
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-10-03T14:52:38.000Z"
+                              itemprop="datePublished">10月 3 2014</time>
+                    </div>
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/nodejs/'>nodejs</a>
-                
-                <a data-pjax href='/tags/npm/'>npm</a>
-                
-                <a data-pjax href='/tags/linux/'>linux</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/10/03/Makefile/">Makefile的简单应用</a>
-            </h1>
+        <section class="post-content">
+            <h1 id="需求分析">需求分析</h1>
+<p>在编写nodejs的过程中，我们经常会遇到clone一个项目后，先要键入<code>npm install</code>来安装依赖，然后运行<code>gulp</code>(因为我觉得gulp的语法很简单，所以我只会gulp，还没研究过grunt)来生成相关编译后的静态文件，再使用<code>node app</code>来运行项目</p>
+<p>这种情况如果只是一次还好，但由于nodejs在每次项目文件更改过之后，需要中断进程，然后重启进程，这个过程如果循环很多遍，相信很多人都会疯掉，虽然后类似<code>supervisor</code>之类的小工具能解决问题，<code>grunt</code>也有相应的插件能解决这个问题，例如文件改动，页面自动刷新等等，但是我这里提供了一种另外的解决方案</p>
+<h1 id="Makefile简介">Makefile简介</h1>
+<p>第一次看到<code>Makefile</code>是在别人的项目中，发现很好用，主要是能少打好多个字，看了下，发现里面内容也很简单</p>
+<p>下面这个是我写的一个Makefile文件里面的内容</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">install</span> : <span class="keyword">all</span></span></div><div class="line"></div><div class="line"><span class="keyword">all</span> :</div><div class="line">	npm <span class="keyword">install</span></div><div class="line">	gulp scripts</div><div class="line">	node app</div></pre></td></tr></table></figure>
 
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-10-03T14:52:38.000Z"
-                      itemprop="datePublished">10月 3 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                需求分析
-在编写nodejs的过程中，我们经常会遇到clone一个项目后，先要键入npm install来安装依赖，然后运行gulp(因为我觉得gulp的语法很简单，所以我只会gulp，还没研究过grunt)来生成相关编译后的静态文件，再使用node app来运行项目
-这种情况如果只是一次还好，但由于nodejs在每次项目文件更改过之后，需要中断进程，然后重启进程，这个过程如果循环很多遍，相信很多人都会疯掉，虽然后类似superviso
-                
-            </p>
-            
-            <p>
-                <a data-pjax href="/2014/10/03/Makefile/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
-            
+<p>用法很简单吧，你只需要把你要运行的命令写在all下面就好了</p>
+
         </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/npm/'>npm</a>
-                
-                <a data-pjax href='/tags/nodejs/'>nodejs</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/28/npm网速慢的解决办法/">npm网速慢的解决办法</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-28T15:22:31.000Z"
-                      itemprop="datePublished">9月 28 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                国内经常会遇到npm特别慢的情况，可以通过下面的方式，更改npm的镜像
-通过下面命令设置镜像
-npm config set registry http://r.cnpmjs.org
-国内镜像：
-
-http://r.cnpmjs.orghttp://registry.cnpmjs.orghttp://registry.npm.taobao.org
-
-官方镜像：
-
-https://registry.npmjs.org
-
-常用的npm的命令
-
-                
-            </p>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
             
-            <p>
-                <a data-pjax href="/2014/09/28/npm网速慢的解决办法/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
             
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2014/10/03/git命令小记/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
         </section>
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page  of </span>
-        
-    </nav>
 </main>
 
 
