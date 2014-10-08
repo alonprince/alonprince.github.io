@@ -256,7 +256,7 @@ table td {
     line-height: 20px;
     text-align: left;
     vertical-align: top;
-    border-top: 1px solid #efefef;
+    /*border-top: 1px solid #efefef;*/
 }
 
 table th { color: #000; }
@@ -276,7 +276,7 @@ table table table { background-color: #fff; }
 
 table tbody > tr:nth-child(odd) > td,
 table tbody > tr:nth-child(odd) > th {
-    background-color: #f6f6f6;
+    /*background-color: #f6f6f6;*/
 }
 
 table.plain tbody > tr:nth-child(odd) > td,

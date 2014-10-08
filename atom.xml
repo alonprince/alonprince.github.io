@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[_Phishing]]></title>
+  <title><![CDATA[_Phishing's blog]]></title>
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-10-06T04:58:31.072Z</updated>
+  <updated>2014-10-08T06:34:24.564Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://alonprince.github.io/2014/10/03/Makefile/"/>
     <id>http://alonprince.github.io/2014/10/03/Makefile/</id>
     <published>2014-10-03T14:52:38.000Z</published>
-    <updated>2014-10-03T15:08:03.000Z</updated>
+    <updated>2014-10-06T05:23:04.000Z</updated>
     <content type="html"><![CDATA[<h1 id="需求分析">需求分析</h1>
 <p>在编写nodejs的过程中，我们经常会遇到clone一个项目后，先要键入<code>npm install</code>来安装依赖，然后运行<code>gulp</code>(因为我觉得gulp的语法很简单，所以我只会gulp，还没研究过grunt)来生成相关编译后的静态文件，再使用<code>node app</code>来运行项目</p>
 <p>这种情况如果只是一次还好，但由于nodejs在每次项目文件更改过之后，需要中断进程，然后重启进程，这个过程如果循环很多遍，相信很多人都会疯掉，虽然后类似<code>supervisor</code>之类的小工具能解决问题，<code>grunt</code>也有相应的插件能解决这个问题，例如文件改动，页面自动刷新等等，但是我这里提供了一种另外的解决方案</p>
@@ -50,7 +50,7 @@
     <link href="http://alonprince.github.io/2014/10/03/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E8%AE%B0/"/>
     <id>http://alonprince.github.io/2014/10/03/git命令小记/</id>
     <published>2014-10-03T04:28:25.000Z</published>
-    <updated>2014-10-03T05:03:20.000Z</updated>
+    <updated>2014-10-06T05:22:58.000Z</updated>
     <content type="html"><![CDATA[<h3 id="简要说明">简要说明</h3>
 <p>刚刚接触git，一直都不会用git，因为之前用的都是svn，目前正在学习nodejs，所以想把写的练习同步到github上，就查了下用法</p>
 <h3 id="初始化">初始化</h3>
