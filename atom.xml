@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-10-08T06:34:24.564Z</updated>
+  <updated>2014-10-09T06:42:04.653Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -13,6 +13,38 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Meteor中settings的设置方法]]></title>
+    <link href="http://alonprince.github.io/2014/10/09/Meteor%E4%B8%ADsettings%E7%9A%84%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/"/>
+    <id>http://alonprince.github.io/2014/10/09/Meteor中settings的设置方法/</id>
+    <published>2014-10-09T06:30:57.000Z</published>
+    <updated>2014-10-09T06:41:38.000Z</updated>
+    <content type="html"><![CDATA[<p>在Meteor的实际开发中，可能会针对不同的服务器做相关的设置，但如果每次都是改源代码会显得很麻烦，也容易出错，于是Meteor.settings就横空出世了</p>
+<p>Meteor.settings的设置很简单</p>
+<p>首先在更目录下新建一个<code>settings.json</code>文件</p>
+<p>在文件中写入</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">	"<span class="attribute">foo</span>": <span class="value"><span class="string">"bar"</span></span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>然后在命令行中输入<code>meteor --settings settings.json</code>来启动项目，或者通过<code>meteor deploy --settings settings.json</code>来部署项目</p>
+<p>这样在Meteor的server端中键入<code>console.log(Meteor.settings.foo)</code>就会返回’bar’</p>
+<p>需要注意的就是，在<code>settings.json</code>中，一定要用严格的json格式，不能使用单引号，不然会出现<code>parse error reading settings file</code>的错误</p>
+<p>例如我正在写一个关于ldap的配置，具体信息如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">	"<span class="attribute">ldap</span>": <span class="value">{</span></div><div class="line">	    "<span class="attribute">url</span>": <span class="value"><span class="string">"ldap://my.ldapserver.com"</span></span>,</div><div class="line">	    "<span class="attribute">base</span>": <span class="value"><span class="string">"ou=people,dc=mydomain"</span></span>,</div><div class="line">	    "<span class="attribute">timeout</span>": <span class="value"><span class="number">10000</span></span>,</div><div class="line">	    "<span class="attribute">bindDn</span>": <span class="value"><span class="string">"cn=admin,dc=mydomain"</span></span>,</div><div class="line">	    "<span class="attribute">bindSecret</span>": <span class="value"><span class="string">"thesecret"</span></span>,</div><div class="line">	    "<span class="attribute">filter</span>": <span class="value"><span class="string">"(&(uid=%uid)(objectClass=inetOrgPerson))"</span></span>,</div><div class="line">	    "<span class="attribute">scope</span>": <span class="value"><span class="string">"one"</span></span>,</div><div class="line">	    "<span class="attribute">nameAttribute</span>": <span class="value"><span class="string">"displayName"</span></span>,</div><div class="line">	    "<span class="attribute">mailAttribute</span>": <span class="value"><span class="string">"mail"</span></span>,</div><div class="line">	    "<span class="attribute">forceUsername</span>": <span class="value"><span class="literal">true</span></span>,</div><div class="line">	    "<span class="attribute">throwError</span>": <span class="value"><span class="literal">true</span></span>,</div><div class="line">	    "<span class="attribute">supportedServices</span>": <span class="value">[<span class="string">"cas"</span>]</span></div><div class="line">  	}</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>这样写之后，你用<code>meteor --settings settings.json</code>来运行，打印你的<code>Meteor.settings</code>就能看见相关设置的信息了</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在Meteor的实际开发中，可能会针对不同的服务器做相关的设置，但如果每次都是改源代码会显得很麻烦，也容易出错，于是Meteor.settings就横空出世了</p>
+<p>Meteor.settings的设置很简单</p>
+<p>首先在更目录下新建一个<code>sett]]>
+    </summary>
+    
+      <category term="Meteor" scheme="http://alonprince.github.io/tags/Meteor/"/>
+    
+      <category term="技术" scheme="http://alonprince.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Makefile的简单应用]]></title>

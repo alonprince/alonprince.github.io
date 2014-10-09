@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Archives: 2014 | _Phishing&#39;s blog</title>
+  <title>Meteor中settings的设置方法 | _Phishing&#39;s blog</title>
   <meta name="description" content="Phishing's blog" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -170,7 +170,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">Meteor中settings的设置方法</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -189,192 +189,63 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/Meteor/' style='color:#D5D5D5'>Meteor</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Meteor中settings的设置方法</h1>
 
-    
-    <article class="post">
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-10-09T06:30:57.000Z"
+                              itemprop="datePublished">10月 9 2014</time>
+                    </div>
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/Meteor/'>Meteor</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/10/09/Meteor中settings的设置方法/">Meteor中settings的设置方法</a>
-            </h1>
+        <section class="post-content">
+            <p>在Meteor的实际开发中，可能会针对不同的服务器做相关的设置，但如果每次都是改源代码会显得很麻烦，也容易出错，于是Meteor.settings就横空出世了</p>
+<p>Meteor.settings的设置很简单</p>
+<p>首先在更目录下新建一个<code>settings.json</code>文件</p>
+<p>在文件中写入</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">	"<span class="attribute">foo</span>": <span class="value"><span class="string">"bar"</span></span></div><div class="line">}</div></pre></td></tr></table></figure>
 
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-10-09T06:30:57.000Z"
-                      itemprop="datePublished">10月 9 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                在Meteor的实际开发中，可能会针对不同的服务器做相关的设置，但如果每次都是改源代码会显得很麻烦，也容易出错，于是Meteor.settings就横空出世了
-Meteor.settings的设置很简单
-首先在更目录下新建一个settings.json文件
-在文件中写入
-123{	"foo": "bar"}
+<p>然后在命令行中输入<code>meteor --settings settings.json</code>来启动项目，或者通过<code>meteor deploy --settings settings.json</code>来部署项目</p>
+<p>这样在Meteor的server端中键入<code>console.log(Meteor.settings.foo)</code>就会返回’bar’</p>
+<p>需要注意的就是，在<code>settings.json</code>中，一定要用严格的json格式，不能使用单引号，不然会出现<code>parse error reading settings file</code>的错误</p>
+<p>例如我正在写一个关于ldap的配置，具体信息如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">	"<span class="attribute">ldap</span>": <span class="value">{</span></div><div class="line">	    "<span class="attribute">url</span>": <span class="value"><span class="string">"ldap://my.ldapserver.com"</span></span>,</div><div class="line">	    "<span class="attribute">base</span>": <span class="value"><span class="string">"ou=people,dc=mydomain"</span></span>,</div><div class="line">	    "<span class="attribute">timeout</span>": <span class="value"><span class="number">10000</span></span>,</div><div class="line">	    "<span class="attribute">bindDn</span>": <span class="value"><span class="string">"cn=admin,dc=mydomain"</span></span>,</div><div class="line">	    "<span class="attribute">bindSecret</span>": <span class="value"><span class="string">"thesecret"</span></span>,</div><div class="line">	    "<span class="attribute">filter</span>": <span class="value"><span class="string">"(&(uid=%uid)(objectClass=inetOrgPerson))"</span></span>,</div><div class="line">	    "<span class="attribute">scope</span>": <span class="value"><span class="string">"one"</span></span>,</div><div class="line">	    "<span class="attribute">nameAttribute</span>": <span class="value"><span class="string">"displayName"</span></span>,</div><div class="line">	    "<span class="attribute">mailAttribute</span>": <span class="value"><span class="string">"mail"</span></span>,</div><div class="line">	    "<span class="attribute">forceUsername</span>": <span class="value"><span class="literal">true</span></span>,</div><div class="line">	    "<span class="attribute">throwError</span>": <span class="value"><span class="literal">true</span></span>,</div><div class="line">	    "<span class="attribute">supportedServices</span>": <span class="value">[<span class="string">"cas"</span>]</span></div><div class="line">  	}</div><div class="line">}</div></pre></td></tr></table></figure>
 
-然后在命令行中输入meteor --settings settings.json来启动项目，或者通过meteor deploy 
-                
-            </p>
-            
-            <p>
-                <a data-pjax href="/2014/10/09/Meteor中settings的设置方法/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
-            
+<p>这样写之后，你用<code>meteor --settings settings.json</code>来运行，打印你的<code>Meteor.settings</code>就能看见相关设置的信息了</p>
+
         </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/nodejs/'>nodejs</a>
-                
-                <a data-pjax href='/tags/npm/'>npm</a>
-                
-                <a data-pjax href='/tags/linux/'>linux</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/10/03/Makefile/">Makefile的简单应用</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-10-03T14:52:38.000Z"
-                      itemprop="datePublished">10月 3 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                需求分析
-在编写nodejs的过程中，我们经常会遇到clone一个项目后，先要键入npm install来安装依赖，然后运行gulp(因为我觉得gulp的语法很简单，所以我只会gulp，还没研究过grunt)来生成相关编译后的静态文件，再使用node app来运行项目
-这种情况如果只是一次还好，但由于nodejs在每次项目文件更改过之后，需要中断进程，然后重启进程，这个过程如果循环很多遍，相信很多人都会疯掉，虽然后类似superviso
-                
-            </p>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
             
-            <p>
-                <a data-pjax href="/2014/10/03/Makefile/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
             
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2014/10/03/Makefile/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
         </section>
+
+
     </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/git/'>git</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/10/03/git命令小记/">git命令小记</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-10-03T04:28:25.000Z"
-                      itemprop="datePublished">10月 3 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                简要说明
-刚刚接触git，一直都不会用git，因为之前用的都是svn，目前正在学习nodejs，所以想把写的练习同步到github上，就查了下用法
-初始化
-git的初始化是
-1$ git init
-
-这样系统就在当前目录生成了一个.git目录
-首次使用git你可能还需要配置一下git
-你可以使用以下命令来配置你git的常用昵称和邮箱
-12$ git config --global user.name "Phishing"$ git co
-                
-            </p>
-            
-            <p>
-                <a data-pjax href="/2014/10/03/git命令小记/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/npm/'>npm</a>
-                
-                <a data-pjax href='/tags/nodejs/'>nodejs</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/28/npm网速慢的解决办法/">npm网速慢的解决办法</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-28T15:22:31.000Z"
-                      itemprop="datePublished">9月 28 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                国内经常会遇到npm特别慢的情况，可以通过下面的方式，更改npm的镜像
-通过下面命令设置镜像
-npm config set registry http://r.cnpmjs.org
-国内镜像：
-
-http://r.cnpmjs.orghttp://registry.cnpmjs.orghttp://registry.npm.taobao.org
-
-官方镜像：
-
-https://registry.npmjs.org
-
-常用的npm的命令
-
-                
-            </p>
-            
-            <p>
-                <a data-pjax href="/2014/09/28/npm网速慢的解决办法/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page  of </span>
-        
-    </nav>
 </main>
 
 
