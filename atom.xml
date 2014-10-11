@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-10-11T07:34:40.404Z</updated>
+  <updated>2014-10-11T07:40:47.653Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://alonprince.github.io/2014/10/11/Extending-Meteor-Accounts/"/>
     <id>http://alonprince.github.io/2014/10/11/Extending-Meteor-Accounts/</id>
     <published>2014-10-11T06:14:29.000Z</published>
-    <updated>2014-10-11T07:34:23.000Z</updated>
+    <updated>2014-10-11T07:40:39.000Z</updated>
     <content type="html"><![CDATA[<h1 id="简要说明">简要说明</h1>
 <p>本文是翻译MeteorHacks的一篇关于Meteor中Accounts的文章,原文见<a href="https://meteorhacks.com/extending-meteor-accounts.html" target="_blank" rel="external">这里</a></p>
 <h1 id="正文">正文</h1>
@@ -35,7 +35,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">title</span>&gt;</span>admin<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- 第一处 --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"hello"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- 第二处 --&gt;</span></div><div class="line">  <span class="comment">&lt;!-- 第三处 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Click"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></div></pre></td></tr></table></figure>
 
 <p>现在，当你启动你的应用的时候，你将会看到如下的信息。（不要在意红色的字）</p>
-<p><strong>译者注：因为hexo的markdown解析问题，所以请用一下的代码分别替换3处注释内容,请手动去掉两个大括号之间的空格</strong></p>
+<p><strong>译者注：因为hexo的markdown解析问题，所以请用以下的代码分别替换3处注释内容,请手动去掉两个大括号之间的空格</strong></p>
 <ul>
 <li>第一处{ {&gt; hello} }</li>
 <li>第二处{ {greeting} }</li>
