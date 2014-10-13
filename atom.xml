@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-10-11T09:32:10.636Z</updated>
+  <updated>2014-10-13T15:21:19.981Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -13,6 +13,33 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[关于在Meteor中写自定义登录需要注意的地方]]></title>
+    <link href="http://alonprince.github.io/2014/10/13/%E5%85%B3%E4%BA%8E%E5%9C%A8Meteor%E4%B8%AD%E5%86%99%E8%87%AA%E5%AE%9A%E4%B9%89%E7%99%BB%E5%BD%95%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/"/>
+    <id>http://alonprince.github.io/2014/10/13/关于在Meteor中写自定义登录需要注意的地方/</id>
+    <published>2014-10-13T14:19:06.000Z</published>
+    <updated>2014-10-13T15:21:13.000Z</updated>
+    <content type="html"><![CDATA[<p>上一篇博文翻译了Meteorhack的一篇关于如何编写自定义登录方式之后，对<code>Meteor</code>的’Accounts’模块有了一定的认识，为在实际工作中提供了理论知识</p>
+<p>通过这几天在编写自定义登录模块的摸爬滚打之后，也逐渐开始遇到了一些问题</p>
+<h1 id="问题一———-第三方登录和原有登录系统冲突">问题一———-第三方登录和原有登录系统冲突</h1>
+<p>我在编写登录模块的时候，由于系统本身已经添加了<code>accounts-password</code>包，在编写我自己的<code>registerLoginHandler</code>之后，会优先去执行<code>accounts-password</code>包里面的函数，导致每次我调用登录模块，换来的都是<code>Match failed</code>的错误</p>
+<p>我通过查看<code>accounts-password</code>包的<a href="https://github.com/meteor/meteor/blob/devel/packages%2Faccounts-password%2Fpassword_server.js#L140" target="_blank" rel="external">源码</a>之后，我发现，<code>accounts-password</code>的登录逻辑里，会判断传入的<code>loginRequest</code>中是否含有<code>password</code>和<code>srp</code>，在0.8.1之前你只能用密码登录，所以提供了一种登录方法，在0.8.1之后，你还可以使用<code>srp</code>来登录，所以<code>Meteor</code>又写了另外一种登录方法</p>
+<p>通过查看发现，是否调用<code>accounts-password</code>的关键在于，你是否传递了<code>password</code>和<code>srp</code>，通过改进后，我把<code>loginRequest</code>传入的key从<code>password</code>更改成了<code>ldap_password</code>，更改之后，就能绕过<code>accounts-password</code>包的登录机制了</p>
+<h1 id="问题二————-关于调用Accounts-callLoginMethod方法中的methodName">问题二————-关于调用Accounts.callLoginMethod方法中的methodName</h1>
+<p>这个问题一直困扰我，我在<code>registerLoginHandler</code>的时候，给我的method声明了名称，但是在实际调用中，我给<code>Accounts.callLoginMethod</code>传递了<code>methodName</code>却提示我<code>method not found</code>的错误，这问题有待解决</p>
+<p>先只写这么多，等我第三方登录模块写完之后，应该会写一个介绍<code>ldapjs</code>的博文</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>上一篇博文翻译了Meteorhack的一篇关于如何编写自定义登录方式之后，对<code>Meteor</code>的’Accounts’模块有了一定的认识，为在实际工作中提供了理论知识</p>
+<p>通过这几天在编写自定义登录模块的摸爬滚打之后，也逐渐开始遇到了一些问题</]]>
+    </summary>
+    
+      <category term="Meteor" scheme="http://alonprince.github.io/tags/Meteor/"/>
+    
+      <category term="技术" scheme="http://alonprince.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[扩展Meteor的用户系统]]></title>
