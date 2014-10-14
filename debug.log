@@ -1,0 +1,26 @@
+date: "2014-10-14 14:10:24.319"
+argv: node /usr/local/bin/hexo g
+os: Darwin 13.3.0 darwin x64
+versions:
+  http_parser: "2.2"
+  node: 0.11.13
+  v8: 3.25.30
+  uv: 0.11.25
+  zlib: 1.2.3
+  modules: "14"
+  openssl: 1.0.1g
+  hexo: 2.8.3
+---
+[debug] 14:10:23.748 Config file loaded from /Users/phishing/Documents/Phishing/test/hexo/_config.yml[debug] 14:10:23.752 Version info checked successfully[debug] 14:10:23.789 Loading database.[debug] 14:10:23.852 Processed: page.md (3ms)[debug] 14:10:23.852 Processed: draft.md (4ms)[debug] 14:10:23.852 Processed: photo.md (2ms)[debug] 14:10:23.853 Processed: post.md (3ms)[debug] 14:10:23.870 Plugin loaded successfully: hexo-generator-feed[debug] 14:10:23.931 Plugin loaded successfully: hexo-renderer-ejs[debug] 14:10:23.954 Plugin loaded successfully: hexo-renderer-marked[debug] 14:10:24.232 Plugin loaded successfully: hexo-renderer-stylus[debug] 14:10:24.271 Processed: _posts/Makefile.md (13ms)[debug] 14:10:24.276 Processed: _posts/Meteor中settings的设置方法.md (1ms)[debug] 14:10:24.277 Processed: _posts/git命令小记.md (1ms)[debug] 14:10:24.279 Processed: _posts/npm网速慢的解决办法.md (1ms)[debug] 14:10:24.280 Processed: about/index.md (0ms)[debug] 14:10:24.281 Processed: _posts/关于在Meteor中写自定义登录需要注意的地方.md (1ms)[debug] 14:10:24.284 Processed: source/css/screen.css (1ms)[debug] 14:10:24.284 Processed: source/css/component.css (0ms)[debug] 14:10:24.284 Processed: source/fonts/OpenSans-Bold-webfont.woff (0ms)[debug] 14:10:24.285 Processed: source/fonts/FontAwesome.otf (1ms)[debug] 14:10:24.285 Processed: source/fonts/OpenSans-Regular-webfont.woff (0ms)[debug] 14:10:24.285 Processed: source/fonts/fontawesome-webfont.eot (0ms)[debug] 14:10:24.285 Processed: source/fonts/fontawesome-webfont.svg (0ms)[debug] 14:10:24.286 Processed: source/fonts/fontawesome-webfont.woff (1ms)[debug] 14:10:24.286 Processed: source/fonts/fontawesome-webfont.ttf (0ms)[debug] 14:10:24.287 Processed: source/js/lib.js (1ms)[debug] 14:10:24.287 Processed: source/js/jquery.min.js (0ms)[debug] 14:10:24.287 Processed: source/js/main.js (0ms)[error] 14:10:24.308 HexoError: Process failed: _posts/Extending-Meteor-Accounts.md
+Error: Unexpected logic on line 36 in file /Users/phishing/Documents/Phishing/test/hexo/source/_posts/Extending-Meteor-Accounts.md.
+    at Object.exports.throwError (/usr/local/lib/node_modules/hexo/node_modules/swig/lib/utils.js:183:9)
+    at Object.TokenParser.parseToken (/usr/local/lib/node_modules/hexo/node_modules/swig/lib/parser.js:276:15)
+    at /usr/local/lib/node_modules/hexo/node_modules/swig/lib/parser.js:86:12
+    at Object.exports.each (/usr/local/lib/node_modules/hexo/node_modules/swig/lib/utils.js:45:11)
+    at Object.TokenParser.parse (/usr/local/lib/node_modules/hexo/node_modules/swig/lib/parser.js:76:11)
+    at parseVariable (/usr/local/lib/node_modules/hexo/node_modules/swig/lib/parser.js:486:18)
+    at /usr/local/lib/node_modules/hexo/node_modules/swig/lib/parser.js:633:15
+    at Object.exports.each (/usr/local/lib/node_modules/hexo/node_modules/swig/lib/utils.js:45:11)
+    at Object.exports.parse (/usr/local/lib/node_modules/hexo/node_modules/swig/lib/parser.js:622:9)
+    at parse (/usr/local/lib/node_modules/hexo/node_modules/swig/lib/swig.js:343:19)
+[debug] 14:10:24.316 Processed: layout/archive.ejs (35ms)[debug] 14:10:24.316 Processed: layout/category.ejs (34ms)[debug] 14:10:24.316 Processed: layout/layout.ejs (34ms)[debug] 14:10:24.316 Processed: layout/index.ejs (34ms)[debug] 14:10:24.316 Processed: layout/post.ejs (34ms)[debug] 14:10:24.316 Processed: layout/page.ejs (34ms)[debug] 14:10:24.316 Processed: layout/tag.ejs (34ms)[debug] 14:10:24.316 Processed: layout/kael/after_all.ejs (34ms)[debug] 14:10:24.317 Processed: layout/kael/footer.ejs (35ms)[debug] 14:10:24.317 Processed: layout/kael/head.ejs (34ms)[debug] 14:10:24.317 Processed: layout/kael/index.ejs (34ms)[debug] 14:10:24.317 Processed: layout/kael/post.ejs (34ms)[debug] 14:10:24.319 Theme config loaded[debug] 14:10:24.319 Processed: _config.yml (38ms)
