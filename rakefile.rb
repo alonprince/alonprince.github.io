@@ -16,7 +16,7 @@ desc "备份到hexo分支"
 task 'backup' do
   system 'git add --all'
   system "git commit -a -m \"backup at #{Time.now.to_s.slice(0..-7)}\""
-  system 'git push git@github.com:alonprince/alonprince.github.io.git hexo'
+  system 'git push https://github.com/alonprince/alonprince.github.io.git hexo'
 end
 
 desc "clean -> generate -> deploy -> backup"
