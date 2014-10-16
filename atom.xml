@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-10-16T09:23:40.664Z</updated>
+  <updated>2014-10-16T09:25:18.454Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -19,9 +19,8 @@
     <link href="http://alonprince.github.io/2014/10/16/%E7%AE%80%E5%8D%95%E8%A7%A3%E6%9E%90formidable-s-API/"/>
     <id>http://alonprince.github.io/2014/10/16/简单解析formidable-s-API/</id>
     <published>2014-10-16T04:01:05.000Z</published>
-    <updated>2014-10-16T09:23:27.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="简介">简介</h1>
-<p>本文翻译自<code>github</code>上的<a href="https://github.com/felixge/node-formidable#events" target="_blank" rel="external">Formidable的官方页面</a></p>
+    <updated>2014-10-16T09:25:11.000Z</updated>
+    <content type="html"><![CDATA[<p>本文翻译自<code>github</code>上的<a href="https://github.com/felixge/node-formidable#events" target="_blank" rel="external">Formidable的官方页面</a></p>
 <h1 id="介绍">介绍</h1>
 <p>一个用来解析数据，特别是上传数据的nodejs模块</p>
 <h1 id="安装">安装</h1>
@@ -135,8 +134,7 @@
 <p>小白前端一枚，对该模块不了解的情况下翻译，本意是为了辅助自己更好的理解该模块，如有错误，请指出，谢谢。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="简介">简介</h1>
-<p>本文翻译自<code>github</code>上的<a href="https://github.com/felixge/node-formidable#events" target="_blank" rel="external">]]>
+    <![CDATA[<p>本文翻译自<code>github</code>上的<a href="https://github.com/felixge/node-formidable#events" target="_blank" rel="external">Formidable的官方页面</a><]]>
     </summary>
     
       <category term="nodejs" scheme="http://alonprince.github.io/tags/nodejs/"/>
