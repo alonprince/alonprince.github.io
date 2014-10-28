@@ -235,23 +235,23 @@
 <p>刚刚接触git，一直都不会用git，因为之前用的都是svn，目前正在学习nodejs，所以想把写的练习同步到github上，就查了下用法</p>
 <h3 id="初始化">初始化</h3>
 <p>git的初始化是</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>git init</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="variable">$ </span>git init</div></pre></figure>
 
 <p>这样系统就在当前目录生成了一个<code>.git</code>目录</p>
 <p>首次使用<code>git</code>你可能还需要配置一下<code>git</code></p>
 <p>你可以使用以下命令来配置你<code>git</code>的常用昵称和邮箱</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global <span class="literal">user</span>.name <span class="string">"Phishing"</span></div><div class="line">$ git config --global <span class="literal">user</span>.email <span class="string">"yourname@xxx.com"</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">$ git config --global <span class="literal">user</span>.name <span class="string">"Phishing"</span></div><div class="line">$ git config --global <span class="literal">user</span>.email <span class="string">"yourname@xxx.com"</span></div></pre></figure>
 
 <h3 id="添加文件">添加文件</h3>
 <p>初始化以后，就需要开始添加你想要添加的文件进入git仓库了</p>
 <p>你可以使用<code>git add</code>这个命令来添加<br>例如</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">add</span> *.js</div><div class="line">$ git <span class="built_in">add</span> *.html</div><div class="line">$ git <span class="built_in">add</span> package.json</div><div class="line">$ git <span class="built_in">add</span> README.md</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">$ git <span class="built_in">add</span> *.js</div><div class="line">$ git <span class="built_in">add</span> *.html</div><div class="line">$ git <span class="built_in">add</span> package.json</div><div class="line">$ git <span class="built_in">add</span> README.md</div></pre></figure>
 
 <p>这样你就把以上文件加入到了git监控的目录里面了</p>
 <p>当然在实际工作中，有些文件是不需要提交到git的</p>
 <p>你可以在当前目录中新建一个<code>.gitignore</code>文件</p>
 <p>在里面添加你不需要监控的文件</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">node_modules/           <span class="comment">//node的包，不需要传上去，文件夹后面加一个/，代表该文件夹被忽略</span></div><div class="line">/test					<span class="comment">//代表根目录下的test文件被忽略</span></div><div class="line">.DS_store 				<span class="comment">//代表.DS_store被忽略</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">node_modules/           <span class="comment">//node的包，不需要传上去，文件夹后面加一个/，代表该文件夹被忽略</span></div><div class="line">/test					<span class="comment">//代表根目录下的test文件被忽略</span></div><div class="line">.DS_store 				<span class="comment">//代表.DS_store被忽略</span></div></pre></figure>
 
 <p>查看当前git的状态可以使用<code>git status</code></p>
 <p>如果你没有添加上面的.gitignore的话，输入<code>git status</code>，git就会用红色高亮告诉你这几个文件是没有被加入git的监控中的，如果需要就使用<code>git add &lt;filename&gt;</code>来添加<br>加了.gitignore后，就不会再提示</p>
@@ -266,19 +266,19 @@
 <h3 id="提交代码到远程仓库">提交代码到远程仓库</h3>
 <p>提交代码到远程仓库时，你首先得新建一个<code>ssh key</code>，<a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">具体方法在这里</a></p>
 <p>弄好ssh key之后，就可以使用</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>git remote origin <span class="symbol">git:</span>/<span class="regexp">/your_github_address/your</span>_repositores_name.git</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="variable">$ </span>git remote origin <span class="symbol">git:</span>/<span class="regexp">/your_github_address/your</span>_repositores_name.git</div></pre></figure>
 
 <p>来定义远程仓库的地址了</p>
 <p>定义好之后就能使用</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>git push</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="variable">$ </span>git push</div></pre></figure>
 
 <p>来提交代码到远程仓库了</p>
 <p>如果你是第一次提交代码，系统会提示你使用</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">push</span> --<span class="keyword">set</span>-upstream origin master</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">$ git <span class="keyword">push</span> --<span class="keyword">set</span>-upstream origin master</div></pre></figure>
 
 <p>来提交代码</p>
 <p>以后你就可以修改代码然后使用</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>git commit -a -m <span class="string">'your massage'</span></div><div class="line"><span class="variable">$ </span>git push</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="variable">$ </span>git commit -a -m <span class="string">'your massage'</span></div><div class="line"><span class="variable">$ </span>git push</div></pre></figure>
 
 <p>来提交你的代码了：）</p>
 <h3 id="最后">最后</h3>

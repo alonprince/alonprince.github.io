@@ -237,108 +237,108 @@
 <h1 id="安装">安装</h1>
 <p>这是一个底层的包，如果你使用的是一个高级的类似<code>Express</code>的框架，你可以通过阅读<a href="http://stackoverflow.com/questions/11295554/how-to-disable-express-bodyparser-for-file-uploads-node-js" target="_blank" rel="external">这里</a>来了解如何在<code>Express</code>来使用<code>Formidable</code>。</p>
 <p>你可以使用<code>npm</code>来安装:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> install formidable<span class="property">@latest</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="built_in">npm</span> install formidable<span class="property">@latest</span></div></pre></figure>
 
 <p>或者手动安装：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone gi<span class="variable">t:</span>//github.<span class="keyword">com</span>/felixge/node-formidable.git formidable</div><div class="line"><span class="keyword">vim</span> my.js</div><div class="line"># var formidable = require(<span class="string">'./formidable'</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">git clone gi<span class="variable">t:</span>//github.<span class="keyword">com</span>/felixge/node-formidable.git formidable</div><div class="line"><span class="keyword">vim</span> my.js</div><div class="line"># var formidable = require(<span class="string">'./formidable'</span>);</div></pre></figure>
 
 <p>注意：Formidable应用了<a href="http://github.com/felixge/node-gently" target="_blank" rel="external">gently</a>来运行单元测试，但是你没必要使用它</p>
 <h1 id="例子">例子</h1>
 <p>解析一个文件上传</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">var formidable = require(<span class="string">'formidable'</span>),</div><div class="line">    http = require(<span class="string">'http'</span>),</div><div class="line">    util = require(<span class="string">'util'</span>);</div><div class="line"></div><div class="line"><span class="transposed_variable">http.</span>createServer(<span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> {</span></div><div class="line">  <span class="keyword">if</span> (<span class="transposed_variable">req.</span>url == <span class="string">'/upload'</span> && <span class="transposed_variable">req.</span><span class="transposed_variable">method.</span>toLowerCase() == <span class="string">'post'</span>) {</div><div class="line">    <span class="comment">// 解析文件上传</span></div><div class="line">    var form = new <span class="transposed_variable">formidable.</span>IncomingForm();</div><div class="line"></div><div class="line">    <span class="transposed_variable">form.</span>parse(req, <span class="function"><span class="keyword">function</span><span class="params">(err, fields, files)</span> {</span></div><div class="line">      <span class="transposed_variable">res.</span>writeHead(<span class="number">200</span>, {<span class="string">'content-type'</span>: <span class="string">'text/plain'</span>});</div><div class="line">      <span class="transposed_variable">res.</span>write(<span class="string">'received upload:\n\n'</span>);</div><div class="line">      <span class="transposed_variable">res.</span><span class="keyword">end</span>(<span class="transposed_variable">util.</span>inspect({fields: fields, files: files}));</div><div class="line">    });</div><div class="line"></div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="comment">// 展示一个文件上传表单</span></div><div class="line">  <span class="transposed_variable">res.</span>writeHead(<span class="number">200</span>, {<span class="string">'content-type'</span>: <span class="string">'text/html'</span>});</div><div class="line">  <span class="transposed_variable">res.</span><span class="keyword">end</span>(</div><div class="line">    <span class="string">'&lt;form action="</span>/upload<span class="string">" enctype="</span>multipart/form-data<span class="string">" method="</span>post<span class="string">"&gt;'</span>+</div><div class="line">    <span class="string">'&lt;input type="</span>text<span class="string">" name="</span>title<span class="string">"&gt;&lt;br&gt;'</span>+</div><div class="line">    <span class="string">'&lt;input type="</span>file<span class="string">" name="</span>upload<span class="string">" multiple="</span>multiple<span class="string">"&gt;&lt;br&gt;'</span>+</div><div class="line">    <span class="string">'&lt;input type="</span>submit<span class="string">" value="</span>Upload<span class="string">"&gt;'</span>+</div><div class="line">    <span class="string">'&lt;/form&gt;'</span></div><div class="line">  );</div><div class="line">}).listen(<span class="number">8080</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">var formidable = require(<span class="string">'formidable'</span>),</div><div class="line">    http = require(<span class="string">'http'</span>),</div><div class="line">    util = require(<span class="string">'util'</span>);</div><div class="line"></div><div class="line"><span class="transposed_variable">http.</span>createServer(<span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> {</span></div><div class="line">  <span class="keyword">if</span> (<span class="transposed_variable">req.</span>url == <span class="string">'/upload'</span> && <span class="transposed_variable">req.</span><span class="transposed_variable">method.</span>toLowerCase() == <span class="string">'post'</span>) {</div><div class="line">    <span class="comment">// 解析文件上传</span></div><div class="line">    var form = new <span class="transposed_variable">formidable.</span>IncomingForm();</div><div class="line"></div><div class="line">    <span class="transposed_variable">form.</span>parse(req, <span class="function"><span class="keyword">function</span><span class="params">(err, fields, files)</span> {</span></div><div class="line">      <span class="transposed_variable">res.</span>writeHead(<span class="number">200</span>, {<span class="string">'content-type'</span>: <span class="string">'text/plain'</span>});</div><div class="line">      <span class="transposed_variable">res.</span>write(<span class="string">'received upload:\n\n'</span>);</div><div class="line">      <span class="transposed_variable">res.</span><span class="keyword">end</span>(<span class="transposed_variable">util.</span>inspect({fields: fields, files: files}));</div><div class="line">    });</div><div class="line"></div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="comment">// 展示一个文件上传表单</span></div><div class="line">  <span class="transposed_variable">res.</span>writeHead(<span class="number">200</span>, {<span class="string">'content-type'</span>: <span class="string">'text/html'</span>});</div><div class="line">  <span class="transposed_variable">res.</span><span class="keyword">end</span>(</div><div class="line">    <span class="string">'&lt;form action="</span>/upload<span class="string">" enctype="</span>multipart/form-data<span class="string">" method="</span>post<span class="string">"&gt;'</span>+</div><div class="line">    <span class="string">'&lt;input type="</span>text<span class="string">" name="</span>title<span class="string">"&gt;&lt;br&gt;'</span>+</div><div class="line">    <span class="string">'&lt;input type="</span>file<span class="string">" name="</span>upload<span class="string">" multiple="</span>multiple<span class="string">"&gt;&lt;br&gt;'</span>+</div><div class="line">    <span class="string">'&lt;input type="</span>submit<span class="string">" value="</span>Upload<span class="string">"&gt;'</span>+</div><div class="line">    <span class="string">'&lt;/form&gt;'</span></div><div class="line">  );</div><div class="line">}).listen(<span class="number">8080</span>);</div></pre></figure>
 
 <h1 id="API">API</h1>
 <h3 id="Formidable-IncomingForm">Formidable.IncomingForm</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="keyword">new</span> formidable.IncomingForm()</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> form = <span class="keyword">new</span> formidable.IncomingForm()</div></pre></figure>
 
 <p>新建一个传入表单的对象</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">form.encoding = <span class="string">'utf-8'</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.encoding = <span class="string">'utf-8'</span></div></pre></figure>
 
 <p>设置上传表单域的编码</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">form.uploadDir = <span class="string">'/my/dir'</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.uploadDir = <span class="string">'/my/dir'</span></div></pre></figure>
 
 <p>设置文件上传的目录，稍后你可以使用<code>fs.rename()</code>来更改它。默认值为<code>os.tmpDir()</code>。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">form.<span class="variable">keepExtensions =</span> <span class="constant">false</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.<span class="variable">keepExtensions =</span> <span class="constant">false</span></div></pre></figure>
 
 <p>如果你想上传的文件保留扩展名，把这一项设置为<code>true</code></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">form</span>.<span class="typedef"><span class="keyword">type</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="title">form</span>.<span class="typedef"><span class="keyword">type</span></span></div></pre></figure>
 
 <p>根据请求来判断的编码类型</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">form.maxFieldsSize = 2 <span class="keyword">*</span> 1024 <span class="keyword">*</span> 1024</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.maxFieldsSize = 2 <span class="keyword">*</span> 1024 <span class="keyword">*</span> 1024</div></pre></figure>
 
 <p>限制分配给处理域的内存大小，如果分配的值超过这个数值，则<code>error</code>时间将会被触发，默认值为2MB。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">form.maxFields </span>=<span class="string"> 1000</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="attribute">form.maxFields </span>=<span class="string"> 1000</span></div></pre></figure>
 
 <p>限制域中解码查询语句的个数。默认值为1000</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">form.<span class="variable">hash =</span> <span class="constant">false</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.<span class="variable">hash =</span> <span class="constant">false</span></div></pre></figure>
 
 <p>如果你想对传入的文件进行校验，请设置该属性为<code>sha1</code>或者<code>md5</code></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">form.<span class="variable">multiples =</span> <span class="constant">false</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.<span class="variable">multiples =</span> <span class="constant">false</span></div></pre></figure>
 
 <p>开启这个选项后，你就能使用HTML5的多文件上传功能了，调用<code>form.parse</code>时传入的就是一个文件的数组</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">form.bytesReceived</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.bytesReceived</div></pre></figure>
 
 <p>从表单获取到的字节数</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">form.bytesExpected</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.bytesExpected</div></pre></figure>
 
 <p>预计还剩的字节数</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">form.parse(request, [<span class="keyword">cb</span>])</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.parse(request, [<span class="keyword">cb</span>])</div></pre></figure>
 
 <p>从一个node.js上传请求数据中解析内容。如果有<code>cb</code>传入，所有的文件和请求将会传递到这个callback,例如:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">form.parse(req, <span class="keyword">function</span>(err, fields, files) {</div><div class="line">	// <span class="keyword">...</span></div><div class="line">});</div><div class="line"></div><div class="line">form.onPart(part);</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.parse(req, <span class="keyword">function</span>(err, fields, files) {</div><div class="line">	// <span class="keyword">...</span></div><div class="line">});</div><div class="line"></div><div class="line">form.onPart(part);</div></pre></figure>
 
 <p>如果你想直接访问<code>multipart stream</code>，你可以覆盖掉这个方法。但是这么做之后会禁用掉<code>field</code>/<code>file</code>事件处理。</p>
 <p>如果你想用Formidable来处理某些文件，你可以这么做：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">form.onPart = <span class="function"><span class="keyword">function</span><span class="params">(part)</span> </span>{</div><div class="line">  <span class="keyword">if</span> (!part.filename) {</div><div class="line">    <span class="comment">// let formidable handle all non-file parts</span></div><div class="line">    form.handlePart(part);</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.onPart = <span class="function"><span class="keyword">function</span><span class="params">(part)</span> </span>{</div><div class="line">  <span class="keyword">if</span> (!part.filename) {</div><div class="line">    <span class="comment">// let formidable handle all non-file parts</span></div><div class="line">    form.handlePart(part);</div><div class="line">  }</div><div class="line">}</div></pre></figure>
 
 <h3 id="Formidable-File">Formidable.File</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">file</span>.<span class="keyword">size</span> = <span class="number">0</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="keyword">file</span>.<span class="keyword">size</span> = <span class="number">0</span></div></pre></figure>
 
 <p>上传文件的大小，单位是bytes，如果文件还在上传中（如在<code>fileBegin</code>事件中）,这个数值将会告诉你有多少字节被写入了硬盘</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">file.<span class="variable">path =</span> <span class="constant">null</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">file.<span class="variable">path =</span> <span class="constant">null</span></div></pre></figure>
 
 <p>当前文件的被写入的路径。如果你不想把你的文件放入设置的公共路径，你可以在<code>fileBegin</code>事件中更改这个值</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">file.<span class="variable">name =</span> <span class="constant">null</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">file.<span class="variable">name =</span> <span class="constant">null</span></div></pre></figure>
 
 <p>根据客户端获取到的文件上传后的名字</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">file</span>.<span class="keyword">type</span> = <span class="keyword">null</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="keyword">file</span>.<span class="keyword">type</span> = <span class="keyword">null</span></div></pre></figure>
 
 <p>根据客户端获取到的文件上传后的<code>mine</code>类型</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">file.<span class="variable">lastModifiedDate =</span> <span class="constant">null</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">file.<span class="variable">lastModifiedDate =</span> <span class="constant">null</span></div></pre></figure>
 
 <p>文件最后被更改的时间对象</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">file.<span class="variable">hash =</span> <span class="constant">null</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">file.<span class="variable">hash =</span> <span class="constant">null</span></div></pre></figure>
 
 <p>得到经过hash计算后的十六进制值</p>
 <h4 id="Formidable-File#toJSON()">Formidable.File#toJSON()</h4>
 <p>这个方法返回一个表示文件的JSON数据，可以使用<code>JSON.stringify()</code>来使用它去记录日志或者响应请求</p>
 <h1 id="事件">事件</h1>
 <h4 id="‘progress’">‘progress’</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'progress'</span>, <span class="function"><span class="keyword">function</span><span class="params">(bytesReceived, bytesExpected)</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'progress'</span>, <span class="function"><span class="keyword">function</span><span class="params">(bytesReceived, bytesExpected)</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></figure>
 
 <p>发生在每一个数据传入的块被解析之后，可以用来实现进度条</p>
 <h4 id="‘field’">‘field’</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'field'</span>, <span class="function"><span class="keyword">function</span><span class="params">(name, value)</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'field'</span>, <span class="function"><span class="keyword">function</span><span class="params">(name, value)</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></figure>
 
 <h4 id="‘fileBegin’">‘fileBegin’</h4>
 <p>每当一个域或者键值对被接受到的时候</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'fileBegin'</span>, <span class="function"><span class="keyword">function</span><span class="params">(name, <span class="keyword">file</span>)</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'fileBegin'</span>, <span class="function"><span class="keyword">function</span><span class="params">(name, <span class="keyword">file</span>)</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></figure>
 
 <h4 id="‘file’">‘file’</h4>
 <p>当一个新的文件在上传流中被检测到的时候触发。 Use this even if you want to stream the file to somewhere else while buffering the upload on the file system.(没理解T_T)</p>
 <p>每当一个文件被接收的时候触发，<code>file</code>是<code>File</code>的实例</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'file'</span>, <span class="function"><span class="keyword">function</span><span class="params">(name, <span class="keyword">file</span>)</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'file'</span>, <span class="function"><span class="keyword">function</span><span class="params">(name, <span class="keyword">file</span>)</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></figure>
 
 <h4 id="‘error’">‘error’</h4>
 <p>当有表单处理错误的时候触发，请求会自动暂停，如果你需要继续触发<code>data</code>事件，你需要手动调用<code>request.resume()</code></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span><span class="params">(err)</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span><span class="params">(err)</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></figure>
 
 <h4 id="‘aborted’">‘aborted’</h4>
 <p>当用户使请求终止的时候触发，现在这个事件是由<code>socket</code>的<code>close</code>和<code>timeout</code>共同触发的，将来会把<code>timeout</code>给独立出来(这需要更改node的核心)。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'aborted'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{</span></span></div><div class="line">});</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'aborted'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span><span class="comment">{</span></span></div><div class="line">});</div></pre></figure>
 
 <h4 id="‘end’">‘end’</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line">form.<span class="keyword">on</span>(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> <span class="comment">{</span></span></div><div class="line">});</div></pre></figure>
 
 <p>当整个请求被接收完并写入磁盘后触发。这里就是你返回数据的一个好地方。</p>
 <h1 id="译者注">译者注</h1>

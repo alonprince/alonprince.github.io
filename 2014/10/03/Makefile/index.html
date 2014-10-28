@@ -241,7 +241,7 @@
 <h1 id="Makefile简介">Makefile简介</h1>
 <p>第一次看到<code>Makefile</code>是在别人的项目中，发现很好用，主要是能少打好多个字，看了下，发现里面内容也很简单</p>
 <p>下面这个是我写的一个Makefile文件里面的内容</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="operator"><span class="keyword">install</span> : <span class="keyword">all</span></span></div><div class="line"></div><div class="line"><span class="keyword">all</span> :</div><div class="line">	npm <span class="keyword">install</span></div><div class="line">	gulp scripts</div><div class="line">	node app</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="operator"><span class="keyword">install</span> : <span class="keyword">all</span></span></div><div class="line"></div><div class="line"><span class="keyword">all</span> :</div><div class="line">	npm <span class="keyword">install</span></div><div class="line">	gulp scripts</div><div class="line">	node app</div></pre></figure>
 
 <p>用法很简单吧，你只需要把你要运行的命令写在all下面就好了</p>
 
