@@ -38,8 +38,8 @@ post_asset_folder: false
 relative_link: false
 highlight:
   enable: true
-  line_number: true
-  tab_replace:
+  line_number: false
+  # tab_replace:
 
 # Category & Tag
 default_category: uncategorized

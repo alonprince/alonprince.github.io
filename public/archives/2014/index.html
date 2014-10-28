@@ -43,6 +43,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/10/16/简单解析formidable-s-API/">简单解析formidable&#39;s API</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/10/13/关于在Meteor中写自定义登录需要注意的地方/">关于在Meteor中写自定义登录需要注意的地方</a>
                                 </li>
                                 
@@ -86,7 +90,7 @@
                                 
                                 <li class="search-category-li mp-pjax">
                                     <a href="/categories/技术/">&nbsp;&nbsp;&nbsp;技术</a>
-                                    <small>6</small>
+                                    <small>7</small>
                                 </li>
                                 
                                 </div>
@@ -123,7 +127,7 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/nodejs/">&nbsp;&nbsp;&nbsp;nodejs</a>
-                                    <small>2</small>
+                                    <small>3</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
@@ -145,6 +149,8 @@
         </nav>
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2014/10/16/简单解析formidable-s-API/">简单解析formidable&#39;s API</a>
                 
                     <a  data-pjax href="/2014/10/13/关于在Meteor中写自定义登录需要注意的地方/">关于在Meteor中写自定义登录需要注意的地方</a>
                 
@@ -206,6 +212,50 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/nodejs/'>nodejs</a>
+                
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/10/16/简单解析formidable-s-API/">简单解析formidable's API</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-10-16T04:01:05.000Z"
+                      itemprop="datePublished">10月 16 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                本文翻译自github上的Formidable的官方页面
+介绍
+一个用来解析数据，特别是上传数据的nodejs模块
+安装
+这是一个底层的包，如果你使用的是一个高级的类似Express的框架，你可以通过阅读这里来了解如何在Express来使用Formidable。
+你可以使用npm来安装:
+npm install formidable@latest
+
+或者手动安装：
+git clone git://github.com/felixge/n
+                
+            </p>
+            
+            <p>
+                <a data-pjax href="/2014/10/16/简单解析formidable-s-API/"
+                   class="excerpt-link">阅读全文...</a>
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
@@ -311,9 +361,9 @@ Meteor有一个非常好的用户认证系统，称之为Accounts。这个认证
 Meteor.settings的设置很简单
 首先在更目录下新建一个settings.json文件
 在文件中写入
-123{	"foo": "bar"}
+{	"foo": "bar"}
 
-然后在命令行中输入meteor --settings settings.json来启动项目，或者通过meteor deploy 
+然后在命令行中输入meteor --settings settings.json来启动项目，或者通过meteor deploy --s
                 
             </p>
             
@@ -393,12 +443,12 @@ Meteor.settings的设置很简单
 刚刚接触git，一直都不会用git，因为之前用的都是svn，目前正在学习nodejs，所以想把写的练习同步到github上，就查了下用法
 初始化
 git的初始化是
-1$ git init
+$ git init
 
 这样系统就在当前目录生成了一个.git目录
 首次使用git你可能还需要配置一下git
 你可以使用以下命令来配置你git的常用昵称和邮箱
-12$ git config --global user.name "Phishing"$ git co
+$ git config --global user.name "Phishing"$ git confi
                 
             </p>
             

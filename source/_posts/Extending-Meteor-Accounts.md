@@ -22,20 +22,26 @@ Meteor有一个非常好的用户认证系统，称之为[Accounts](http://docs.
 * 用`meteor add accounts-ui`来添加`accounts-ui`包
 * 用下面的代码来替换掉`admin.html`中的代码
 添加`loginButtons`来调用`accounts-ui`包
-{% rawblock %}
+```html
 <head>
   <title>admin</title>
 </head>
 <body>
+{% raw %}
   {{> hello}}
+{% endraw /%}
 </body>
 <template name="hello">
   <h1>Hello World!</h1>
+{% raw %}
   {{greeting}}
+{% endraw /%}
+{% raw %}
   {{> loginButtons}}
+{% endraw /%}
   <input type="button" value="Click" />
 </template>
-{% endrawblock /%}
+```
 现在，当你启动你的应用的时候，你将会看到如下的信息。（不要在意红色的字）
 ![初始界面](http://phishingw.qiniudn.com/GNOR8BK.png)
 
