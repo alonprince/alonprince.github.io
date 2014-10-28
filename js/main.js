@@ -307,7 +307,7 @@ function afterPjax() {
     if (isPostPage && !smallScreen) {
         generateTOC();
         setTimeout("scrollSpy()",300);
-        duoshuoInlineComment();
+        // duoshuoInlineComment();
 
         $('.scroller').scroll(function () {
             if ((window.screen.width - 700)/2 > $('#trigger').parent().width() + $('#nexus-back').parent().width()){
