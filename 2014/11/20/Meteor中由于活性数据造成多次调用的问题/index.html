@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Tag: linux | _Phishing&#39;s blog</title>
+  <title>Meteor中由于活性数据造成多次调用的问题 | _Phishing&#39;s blog</title>
   <meta name="description" content="Phishing's blog" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -188,7 +188,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">Meteor中由于活性数据造成多次调用的问题</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -207,58 +207,96 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Meteor中由于活性数据造成多次调用的问题</h1>
 
-    
-    <article class="post">
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-11-19T16:24:06.000Z"
+                              itemprop="datePublished">11月 20 2014</time>
+                    </div>
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/nodejs/'>nodejs</a>
-                
-                <a data-pjax href='/tags/npm/'>npm</a>
-                
-                <a data-pjax href='/tags/linux/'>linux</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/10/03/Makefile/">Makefile的简单应用</a>
-            </h1>
+        <section class="post-content">
+            <p>在<code>meteor</code>的开发中，我们经常会遇到一个模板的<code>helper</code>中的某一个变量的计算过程中，使用了活性数据，例如<code>Collection.find</code>、<code>Session.get(&#39;key&#39;)</code>之类的。由于这些值默认为活性数据，也就是说当这些值发生改变的时候，引用了活性数据的变量就会重新计算一次，如若这个变量逻辑很复杂，则是一件十分耗性能的事情。</p>
+<p>举个例子，我在开发过程中遇到过这种情况。我前台算好了一个数据，然后去后台订阅数据回来，我在某一个模板的<code>helper</code>中使用了<code>find</code>去查询取回来的数据，但是我的订阅是动态订阅的，所以我这个<code>helper</code>就会不停的重复调用，甚至是在我数据还没订阅回来，在订阅过程中就在不停的调用，这显然是不太好的地方。</p>
+<p>例如这样的代码</p>
+<p>client/subscribe.js</p>
+<figure class="highlight javascript"><pre><div class="line"><span class="keyword">var</span> day = <span class="keyword">new</span> <span class="built_in">Date</span>().getDay()</div><div class="line">Meteor.subscribe(<span class="string">'comment'</span>, {</div><div class="line">	day: day</div><div class="line">})</div></pre></figure>
 
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-10-03T14:52:38.000Z"
-                      itemprop="datePublished">10月 3 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                需求分析
-在编写nodejs的过程中，我们经常会遇到clone一个项目后，先要键入npm install来安装依赖，然后运行gulp(因为我觉得gulp的语法很简单，所以我只会gulp，还没研究过grunt)来生成相关编译后的静态文件，再使用node app来运行项目
-这种情况如果只是一次还好，但由于nodejs在每次项目文件更改过之后，需要中断进程，然后重启进程，这个过程如果循环很多遍，相信很多人都会疯掉，虽然后类似superviso
-                
-            </p>
-            
-            <p>
-                <a data-pjax href="/2014/10/03/Makefile/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
-            
+<p>client/view/index.html</p>
+<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"index"</span>&gt;</span></div><div class="line">	{{#each comments}}</div><div class="line">		<span class="tag">&lt;<span class="title">p</span>&gt;</span>在`meteor`的开发中，我们经常会遇到一个模板的`helper`中的某一个变量的计算过程中，使用了活性数据，例如`Collection.find`、`Session.get('key')`之类的。由于这些值默认为活性数据，也就是说当这些值发生改变的时候，引用了活性数据的变量就会重新计算一次，如若这个变量逻辑很复杂，则是一件十分耗性能的事情。</div><div class="line"></div><div class="line">举个例子，我在开发过程中遇到过这种情况。我前台算好了一个数据，然后去后台订阅数据回来，我在某一个模板的`helper`中使用了`find`去查询取回来的数据，但是我的订阅是动态订阅的，所以我这个`helper`就会不停的重复调用，甚至是在我数据还没订阅回来，在订阅过程中就在不停的调用，这显然是不太好的地方。</div><div class="line"></div><div class="line">例如这样的代码</div><div class="line"></div><div class="line">client/subscribe.js</div></pre></figure>
+
+<p>javascript<br>var day = new Date().getDay()<br>Meteor.subscribe(‘comment’, {<br>    day: day<br>})</p>
+<figure class="highlight"><pre><div class="line"></div><div class="line">client/<span class="keyword">view</span>/<span class="built_in">index</span>.html</div></pre></figure>
+
+<p>html</p>
+<template name="index"><br>    {% raw %}{{#each comments}}{% endraw %}<br>        <p>{{content}}</p><br>    {% raw %}{{/each}}{% endraw %}<br></template>
+
+<figure class="highlight"><pre><div class="line"></div><div class="line">client/<span class="keyword">view</span>/<span class="built_in">index</span>.js</div></pre></figure>
+
+<p>javascript<br>Template.index.helper({<br>    ‘comments’: function() {<br>        return Comment.find()<br>    }<br>})</p>
+<figure class="highlight"><pre><div class="line"></div><div class="line">如果这个时候很不巧，正好刚刚过了零点，那么订阅的数据就会发生更改，导致<span class="escape">`C</span>omment.find<span class="escape">`的</span>值在不停的更改，就会不断触发<span class="escape">`c</span>omments<span class="escape">`这</span>个<span class="escape">`h</span>elper<span class="escape">`在</span>**订阅数据还未完成**的情况下重复计算，为了解决这样的情况，我使用了以下方法：</div><div class="line"></div><div class="line">client/subscribe.js</div></pre></figure>
+
+<p>javascript<br>var day = new Date().getDay()<br>Meteor.isReady = Meteor.subscribe(‘comment’, {<br>    day: day<br>})</p>
+<figure class="highlight"><pre><div class="line"></div><div class="line">client/<span class="keyword">view</span>/<span class="built_in">index</span>.js</div></pre></figure>
+
+<p>javascript<br>Template.index.helper({<br>    ‘comments’: function() {<br>        // 用订阅的ready状态来判断是否返回，避免正在订阅的时候也继续计算<br>        if(Meteor.isReady.ready()) {<br>            return Comment.find()<br>        }<br>    }<br>})</p>
+<figure class="highlight"><pre><div class="line"></div><div class="line">这个例子太简单，而且也没有很形象的重现出遇到的问题，在实际开发过程中，代码远比这要复杂的多，而且我在使用中会出现<span class="escape">`M</span>eteor.isReady.ready()<span class="escape">`状</span>态值不是实时更新，或没有活性跟踪的情况，不知道这是因为bug还是我的代码写的有问题，在不得已的情况下，我把上述例子改成了</div><div class="line"></div><div class="line">client/subscribe.js</div></pre></figure>
+
+<p>javascript<br>var day = new Date().getDay()<br>Meteor.isReady = Meteor.subscribe(‘comment’, {<br>    day: day<br>})<br>Session.set(‘isReady’,Meteor.isReady.ready())</p>
+<figure class="highlight"><pre><div class="line"></div><div class="line">client/<span class="keyword">view</span>/<span class="built_in">index</span>.js</div></pre></figure>
+
+<p>javascript<br>Template.index.helper({<br>    ‘comments’: function() {<br>        // 用订阅的ready状态来判断是否返回，避免正在订阅的时候也继续计算<br>        if(Session.get(‘isReady’)) {<br>            return Comment.find()<br>        }<br>    }<br>})</p>
+<figure class="highlight"><pre><div class="line"></div><div class="line"><span class="type">Meteor</span>在实际开发中还是有很多问题，有无数的坑等着去填(╯‵□′)╯︵┻━┻</div><div class="line"></div><div class="line">&lt;/p&gt;</div><div class="line">	{{/each}}</div><div class="line">&lt;/<span class="keyword">template</span>&gt;</div></pre></figure>
+
+<p>client/view/index.js</p>
+<figure class="highlight javascript"><pre><div class="line">Template.index.helper({</div><div class="line">	<span class="string">'comments'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		<span class="keyword">return</span> Comment.find()</div><div class="line">	}</div><div class="line">})</div></pre></figure>
+
+<p>如果这个时候很不巧，正好刚刚过了零点，那么订阅的数据就会发生更改，导致<code>Comment.find</code>的值在不停的更改，就会不断触发<code>comments</code>这个<code>helper</code>在<strong>订阅数据还未完成</strong>的情况下重复计算，为了解决这样的情况，我使用了以下方法：</p>
+<p>client/subscribe.js</p>
+<figure class="highlight javascript"><pre><div class="line"><span class="keyword">var</span> day = <span class="keyword">new</span> <span class="built_in">Date</span>().getDay()</div><div class="line">Meteor.isReady = Meteor.subscribe(<span class="string">'comment'</span>, {</div><div class="line">	day: day</div><div class="line">})</div></pre></figure>
+
+<p>client/view/index.js</p>
+<figure class="highlight javascript"><pre><div class="line">Template.index.helper({</div><div class="line">	<span class="string">'comments'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		<span class="comment">// 用订阅的ready状态来判断是否返回，避免正在订阅的时候也继续计算</span></div><div class="line">		<span class="keyword">if</span>(Meteor.isReady.ready()) {</div><div class="line">			<span class="keyword">return</span> Comment.find()</div><div class="line">		}</div><div class="line">	}</div><div class="line">})</div></pre></figure>
+
+<p>这个例子太简单，而且也没有很形象的重现出遇到的问题，在实际开发过程中，代码远比这要复杂的多，而且我在使用中会出现<code>Meteor.isReady.ready()</code>状态值不是实时更新，或没有活性跟踪的情况，不知道这是因为bug还是我的代码写的有问题，在不得已的情况下，我把上述例子改成了</p>
+<p>client/subscribe.js</p>
+<figure class="highlight javascript"><pre><div class="line"><span class="keyword">var</span> day = <span class="keyword">new</span> <span class="built_in">Date</span>().getDay()</div><div class="line">Meteor.isReady = Meteor.subscribe(<span class="string">'comment'</span>, {</div><div class="line">	day: day</div><div class="line">})</div><div class="line">Session.set(<span class="string">'isReady'</span>,Meteor.isReady.ready())</div></pre></figure>
+
+<p>client/view/index.js</p>
+<figure class="highlight javascript"><pre><div class="line">Template.index.helper({</div><div class="line">	<span class="string">'comments'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		<span class="comment">// 用订阅的ready状态来判断是否返回，避免正在订阅的时候也继续计算</span></div><div class="line">		<span class="keyword">if</span>(Session.get(<span class="string">'isReady'</span>)) {</div><div class="line">			<span class="keyword">return</span> Comment.find()</div><div class="line">		}</div><div class="line">	}</div><div class="line">})</div></pre></figure>
+
+<p>Meteor在实际开发中还是有很多问题，有无数的坑等着去填(╯‵□′)╯︵┻━┻</p>
+
         </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2014/10/13/关于在Meteor中写自定义登录需要注意的地方/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page  of </span>
-        
-    </nav>
 </main>
 
 
