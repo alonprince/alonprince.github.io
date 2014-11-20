@@ -321,7 +321,7 @@ margin on the iframe, cause it breaks stuff. */
 }
 
 .content {
-    margin-top: 100px;
+    padding-top: 50px;
 }
 
 
