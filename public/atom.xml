@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-10-28T04:06:55.500Z</updated>
+  <updated>2014-11-20T09:55:54.661Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -15,11 +15,51 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Meteor中由于活性数据造成多次调用的问题]]></title>
+    <link href="http://alonprince.github.io/2014/11/20/Meteor%E4%B8%AD%E7%94%B1%E4%BA%8E%E6%B4%BB%E6%80%A7%E6%95%B0%E6%8D%AE%E9%80%A0%E6%88%90%E5%A4%9A%E6%AC%A1%E8%B0%83%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://alonprince.github.io/2014/11/20/Meteor中由于活性数据造成多次调用的问题/</id>
+    <published>2014-11-19T16:24:06.000Z</published>
+    <updated>2014-11-20T02:18:17.000Z</updated>
+    <content type="html"><![CDATA[<p>在<code>meteor</code>的开发中，我们经常会遇到一个模板的<code>helper</code>中的某一个变量的计算过程中，使用了活性数据，例如<code>Collection.find</code>、<code>Session.get(&#39;key&#39;)</code>之类的。由于这些值默认为活性数据，也就是说当这些值发生改变的时候，引用了活性数据的变量就会重新计算一次，如若这个变量逻辑很复杂，则是一件十分耗性能的事情。</p>
+<p>举个例子，我在开发过程中遇到过这种情况。我前台算好了一个数据，然后去后台订阅数据回来，我在某一个模板的<code>helper</code>中使用了<code>find</code>去查询取回来的数据，但是我的订阅是动态订阅的，所以我这个<code>helper</code>就会不停的重复调用，甚至是在我数据还没订阅回来，在订阅过程中就在不停的调用，这显然是不太好的地方。</p>
+<p>例如这样的代码</p>
+<p>client/subscribe.js</p>
+<figure class="highlight javascript"><pre><div class="line"><span class="keyword">var</span> day = <span class="keyword">new</span> <span class="built_in">Date</span>().getDay()</div><div class="line">Meteor.subscribe(<span class="string">'comment'</span>, {</div><div class="line">	day: day</div><div class="line">})</div></pre></figure>
+
+<p>client/view/index.html</p>
+<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"index"</span>&gt;</span></div><div class="line">	{{#each comments}}</div><div class="line">		<span class="tag">&lt;<span class="title">p</span>&gt;</span>{{content}}<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line">	{{/each}}</div><div class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></div></pre></figure>
+
+<p>client/view/index.js</p>
+<figure class="highlight javascript"><pre><div class="line">Template.index.helper({</div><div class="line">	<span class="string">'comments'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		<span class="keyword">return</span> Comment.find()</div><div class="line">	}</div><div class="line">})</div></pre></figure>
+
+<p>如果这个时候很不巧，正好刚刚过了零点，那么订阅的数据就会发生更改，导致<code>Comment.find</code>的值在不停的更改，就会不断触发<code>comments</code>这个<code>helper</code>在<strong>订阅数据还未完成</strong>的情况下重复计算，为了解决这样的情况，我使用了以下方法：</p>
+<p>client/subscribe.js</p>
+<figure class="highlight javascript"><pre><div class="line"><span class="keyword">var</span> day = <span class="keyword">new</span> <span class="built_in">Date</span>().getDay()</div><div class="line">Meteor.isReady = Meteor.subscribe(<span class="string">'comment'</span>, {</div><div class="line">	day: day</div><div class="line">})</div></pre></figure>
+
+<p>client/view/index.js</p>
+<figure class="highlight javascript"><pre><div class="line">Template.index.helper({</div><div class="line">	<span class="string">'comments'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		<span class="comment">// 用订阅的ready状态来判断是否返回，避免正在订阅的时候也继续计算</span></div><div class="line">		<span class="keyword">if</span>(Meteor.isReady.ready()) {</div><div class="line">			<span class="keyword">return</span> Comment.find()</div><div class="line">		}</div><div class="line">	}</div><div class="line">})</div></pre></figure>
+
+<p>这个例子太简单，而且也没有很形象的重现出遇到的问题，在实际开发过程中，代码远比这要复杂的多，而且我在使用中会出现<code>Meteor.isReady.ready()</code>状态值不是实时更新，或没有活性跟踪的情况，不知道这是因为bug还是我的代码写的有问题，在不得已的情况下，我把上述例子改成了</p>
+<p>client/subscribe.js</p>
+<figure class="highlight javascript"><pre><div class="line"><span class="keyword">var</span> day = <span class="keyword">new</span> <span class="built_in">Date</span>().getDay()</div><div class="line">Meteor.isReady = Meteor.subscribe(<span class="string">'comment'</span>, {</div><div class="line">	day: day</div><div class="line">})</div><div class="line">Session.set(<span class="string">'isReady'</span>,Meteor.isReady.ready())</div></pre></figure>
+
+<p>client/view/index.js</p>
+<figure class="highlight javascript"><pre><div class="line">Template.index.helper({</div><div class="line">	<span class="string">'comments'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		<span class="comment">// 用订阅的ready状态来判断是否返回，避免正在订阅的时候也继续计算</span></div><div class="line">		<span class="keyword">if</span>(Session.get(<span class="string">'isReady'</span>)) {</div><div class="line">			<span class="keyword">return</span> Comment.find()</div><div class="line">		}</div><div class="line">	}</div><div class="line">})</div></pre></figure>
+
+<p>Meteor在实际开发中还是有很多问题，有无数的坑等着去填(╯‵□′)╯︵┻━┻</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在<code>meteor</code>的开发中，我们经常会遇到一个模板的<code>helper</code>中的某一个变量的计算过程中，使用了活性数据，例如<code>Collection.find</code>、<code>Session.get(&#39;key&#]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[简单解析formidable's API]]></title>
     <link href="http://alonprince.github.io/2014/10/16/%E7%AE%80%E5%8D%95%E8%A7%A3%E6%9E%90formidable-s-API/"/>
     <id>http://alonprince.github.io/2014/10/16/简单解析formidable-s-API/</id>
     <published>2014-10-16T04:01:05.000Z</published>
-    <updated>2014-10-16T09:25:11.000Z</updated>
+    <updated>2014-11-20T02:11:16.000Z</updated>
     <content type="html"><![CDATA[<p>本文翻译自<code>github</code>上的<a href="https://github.com/felixge/node-formidable#events" target="_blank" rel="external">Formidable的官方页面</a></p>
 <h1 id="介绍">介绍</h1>
 <p>一个用来解析数据，特别是上传数据的nodejs模块</p>
@@ -175,7 +215,7 @@
     <link href="http://alonprince.github.io/2014/10/11/Extending-Meteor-Accounts/"/>
     <id>http://alonprince.github.io/2014/10/11/Extending-Meteor-Accounts/</id>
     <published>2014-10-11T06:14:29.000Z</published>
-    <updated>2014-10-14T06:58:26.000Z</updated>
+    <updated>2014-11-20T02:11:16.000Z</updated>
     <content type="html"><![CDATA[<h1 id="简要说明">简要说明</h1>
 <p>本文是翻译MeteorHacks的一篇关于Meteor中Accounts的文章,原文见<a href="https://meteorhacks.com/extending-meteor-accounts.html" target="_blank" rel="external">这里</a></p>
 <h1 id="正文">正文</h1>

@@ -43,6 +43,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/11/20/Meteor中由于活性数据造成多次调用的问题/">Meteor中由于活性数据造成多次调用的问题</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/10/16/简单解析formidable-s-API/">简单解析formidable&#39;s API</a>
                                 </li>
                                 
@@ -150,6 +154,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/11/20/Meteor中由于活性数据造成多次调用的问题/">Meteor中由于活性数据造成多次调用的问题</a>
+                
                     <a  data-pjax href="/2014/10/16/简单解析formidable-s-API/">简单解析formidable&#39;s API</a>
                 
                     <a  data-pjax href="/2014/10/13/关于在Meteor中写自定义登录需要注意的地方/">关于在Meteor中写自定义登录需要注意的地方</a>
@@ -209,9 +215,48 @@
 <!-- -->
 <!--<body class="home-template">-->
 <!---->
-  
-<main class="content" role="main">
+  <div class="hello">
+    <div class="intro-me">
+        <h2>Phishing</h2>
+        <p>人们管这叫博客</p>
+        <a href="#content"></a>
+    </div>
+    <div class="triangle"></div> 
+</div>
+<main class="content" role="main" id="content">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/11/20/Meteor中由于活性数据造成多次调用的问题/">Meteor中由于活性数据造成多次调用的问题</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-11-19T16:24:06.000Z"
+                      itemprop="datePublished">11月 20 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                在meteor的开发中，我们经常会遇到一个模板的helper中的某一个变量的计算过程中，使用了活性数据，例如Collection.find、Session.get(&#39;key&#39;)之类的。由于这些值默认为活性数据，也就是说当这些值发生改变的时候，引用了活性数据的变量就会重新计算一次，如若这个变量逻辑很复杂，则是一件十分耗性能的事情。
+举个例子，我在开发过程中遇到过这种情况。我前台算好了一个数据，然后去后台订阅数据回来，我在某
+                
+            </p>
+            
+            <p>
+                <a data-pjax href="/2014/11/20/Meteor中由于活性数据造成多次调用的问题/"
+                   class="excerpt-link">阅读全文...</a>
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
