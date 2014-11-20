@@ -47,6 +47,10 @@
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/10/16/简单解析formidable-s-API/">简单解析formidable&#39;s API</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/10/13/关于在Meteor中写自定义登录需要注意的地方/">关于在Meteor中写自定义登录需要注意的地方</a>
                                 </li>
                                 
@@ -90,7 +94,7 @@
                                 
                                 <li class="search-category-li mp-pjax">
                                     <a href="/categories/技术/">&nbsp;&nbsp;&nbsp;技术</a>
-                                    <small>6</small>
+                                    <small>7</small>
                                 </li>
                                 
                                 </div>
@@ -127,7 +131,7 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/nodejs/">&nbsp;&nbsp;&nbsp;nodejs</a>
-                                    <small>2</small>
+                                    <small>3</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
@@ -151,6 +155,8 @@
             <div class="pjax-hidden" style="display: none">
                 
                     <a  data-pjax href="/2014/11/20/Meteor中由于活性数据造成多次调用的问题/">Meteor中由于活性数据造成多次调用的问题</a>
+                
+                    <a  data-pjax href="/2014/10/16/简单解析formidable-s-API/">简单解析formidable&#39;s API</a>
                 
                     <a  data-pjax href="/2014/10/13/关于在Meteor中写自定义登录需要注意的地方/">关于在Meteor中写自定义登录需要注意的地方</a>
                 
@@ -243,10 +249,9 @@
 <li>用<code>meteor add accounts-ui</code>来添加<code>accounts-ui</code>包</li>
 <li>用下面的代码来替换掉<code>admin.html</code>中的代码<br>添加<code>loginButtons</code>来调用<code>accounts-ui</code>包</li>
 </ul>
-<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">title</span>&gt;</span>admin<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line">  {{&gt; hello}}</div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"hello"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></div><div class="line">  {{greeting}}</div><div class="line">  {{&gt; loginButtons}}</div><div class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Click"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></div></pre></figure>
+<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">title</span>&gt;</span>admin<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line"></div><div class="line">  {{&gt; hello}}</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"hello"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></div><div class="line"></div><div class="line">  {{greeting}}</div><div class="line"></div><div class="line"></div><div class="line">  {{&gt; loginButtons}}</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Click"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></div></pre></figure>
 
-<p>现在，当你启动你的应用的时候，你将会看到如下的信息。（不要在意红色的字）</p>
-<p><img src="http://phishingw.qiniudn.com/GNOR8BK.png" alt="初始界面"></p>
+<p>现在，当你启动你的应用的时候，你将会看到如下的信息。（不要在意红色的字）<br><img src="http://phishingw.qiniudn.com/GNOR8BK.png" alt="初始界面"></p>
 <h1 id="添加登录的处理方式">添加登录的处理方式</h1>
 <p>现在，我们需要为我们的管理认证系统注册一个登录的方法。下面是一个创建在<code>server/admin.js</code>的服务端函数。</p>
 <figure class="highlight javascript"><pre><div class="line">Accounts.registerLoginHandler(<span class="function"><span class="keyword">function</span><span class="params">(loginRequest)</span> </span>{</div><div class="line">  <span class="comment">//Meteor中有多个登录模块 </span></div><div class="line">  <span class="comment">//一个登录的请求需要通过所有的这些登录模块来寻找它所需要的模块</span></div><div class="line">  <span class="comment">//所以，在我们这个登录模块中，我们只需要考虑登录的请求中含有admin字段请求</span></div><div class="line">  <span class="keyword">if</span>(!loginRequest.admin) {</div><div class="line">  	<span class="comment">//如果不含有admin字段，则return出去</span></div><div class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="comment">//这里是我们的认证逻辑</span></div><div class="line">  <span class="keyword">if</span>(loginRequest.password != <span class="string">'admin-password'</span>) {</div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">  }</div><div class="line">  </div><div class="line">  <span class="comment">//如果不存在管理帐号，则创建一个，并获取到userId</span></div><div class="line">  <span class="keyword">var</span> userId = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">var</span> user = Meteor.users.findOne({username: <span class="string">'admin'</span>});</div><div class="line">  <span class="keyword">if</span>(!user) {</div><div class="line">    userId = Meteor.users.insert({username: <span class="string">'admin'</span>});</div><div class="line">  } <span class="keyword">else</span> {</div><div class="line">    userId = user._id;</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="comment">//发送登录者的userId</span></div><div class="line">  <span class="keyword">return</span> {</div><div class="line">    id: userId</div><div class="line">  }</div><div class="line">});</div></pre></figure>
