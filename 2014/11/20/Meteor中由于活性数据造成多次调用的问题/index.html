@@ -234,30 +234,7 @@
 <figure class="highlight javascript"><pre><div class="line"><span class="keyword">var</span> day = <span class="keyword">new</span> <span class="built_in">Date</span>().getDay()</div><div class="line">Meteor.subscribe(<span class="string">'comment'</span>, {</div><div class="line">	day: day</div><div class="line">})</div></pre></figure>
 
 <p>client/view/index.html</p>
-<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"index"</span>&gt;</span></div><div class="line">	{{#each comments}}</div><div class="line">		<span class="tag">&lt;<span class="title">p</span>&gt;</span>在`meteor`的开发中，我们经常会遇到一个模板的`helper`中的某一个变量的计算过程中，使用了活性数据，例如`Collection.find`、`Session.get('key')`之类的。由于这些值默认为活性数据，也就是说当这些值发生改变的时候，引用了活性数据的变量就会重新计算一次，如若这个变量逻辑很复杂，则是一件十分耗性能的事情。</div><div class="line"></div><div class="line">举个例子，我在开发过程中遇到过这种情况。我前台算好了一个数据，然后去后台订阅数据回来，我在某一个模板的`helper`中使用了`find`去查询取回来的数据，但是我的订阅是动态订阅的，所以我这个`helper`就会不停的重复调用，甚至是在我数据还没订阅回来，在订阅过程中就在不停的调用，这显然是不太好的地方。</div><div class="line"></div><div class="line">例如这样的代码</div><div class="line"></div><div class="line">client/subscribe.js</div></pre></figure>
-
-<p>javascript<br>var day = new Date().getDay()<br>Meteor.subscribe(‘comment’, {<br>    day: day<br>})</p>
-<figure class="highlight"><pre><div class="line"></div><div class="line">client/<span class="keyword">view</span>/<span class="built_in">index</span>.html</div></pre></figure>
-
-<p>html</p>
-<template name="index"><br>    {% raw %}{{#each comments}}{% endraw %}<br>        <p>{{content}}</p><br>    {% raw %}{{/each}}{% endraw %}<br></template>
-
-<figure class="highlight"><pre><div class="line"></div><div class="line">client/<span class="keyword">view</span>/<span class="built_in">index</span>.js</div></pre></figure>
-
-<p>javascript<br>Template.index.helper({<br>    ‘comments’: function() {<br>        return Comment.find()<br>    }<br>})</p>
-<figure class="highlight"><pre><div class="line"></div><div class="line">如果这个时候很不巧，正好刚刚过了零点，那么订阅的数据就会发生更改，导致<span class="escape">`C</span>omment.find<span class="escape">`的</span>值在不停的更改，就会不断触发<span class="escape">`c</span>omments<span class="escape">`这</span>个<span class="escape">`h</span>elper<span class="escape">`在</span>**订阅数据还未完成**的情况下重复计算，为了解决这样的情况，我使用了以下方法：</div><div class="line"></div><div class="line">client/subscribe.js</div></pre></figure>
-
-<p>javascript<br>var day = new Date().getDay()<br>Meteor.isReady = Meteor.subscribe(‘comment’, {<br>    day: day<br>})</p>
-<figure class="highlight"><pre><div class="line"></div><div class="line">client/<span class="keyword">view</span>/<span class="built_in">index</span>.js</div></pre></figure>
-
-<p>javascript<br>Template.index.helper({<br>    ‘comments’: function() {<br>        // 用订阅的ready状态来判断是否返回，避免正在订阅的时候也继续计算<br>        if(Meteor.isReady.ready()) {<br>            return Comment.find()<br>        }<br>    }<br>})</p>
-<figure class="highlight"><pre><div class="line"></div><div class="line">这个例子太简单，而且也没有很形象的重现出遇到的问题，在实际开发过程中，代码远比这要复杂的多，而且我在使用中会出现<span class="escape">`M</span>eteor.isReady.ready()<span class="escape">`状</span>态值不是实时更新，或没有活性跟踪的情况，不知道这是因为bug还是我的代码写的有问题，在不得已的情况下，我把上述例子改成了</div><div class="line"></div><div class="line">client/subscribe.js</div></pre></figure>
-
-<p>javascript<br>var day = new Date().getDay()<br>Meteor.isReady = Meteor.subscribe(‘comment’, {<br>    day: day<br>})<br>Session.set(‘isReady’,Meteor.isReady.ready())</p>
-<figure class="highlight"><pre><div class="line"></div><div class="line">client/<span class="keyword">view</span>/<span class="built_in">index</span>.js</div></pre></figure>
-
-<p>javascript<br>Template.index.helper({<br>    ‘comments’: function() {<br>        // 用订阅的ready状态来判断是否返回，避免正在订阅的时候也继续计算<br>        if(Session.get(‘isReady’)) {<br>            return Comment.find()<br>        }<br>    }<br>})</p>
-<figure class="highlight"><pre><div class="line"></div><div class="line"><span class="type">Meteor</span>在实际开发中还是有很多问题，有无数的坑等着去填(╯‵□′)╯︵┻━┻</div><div class="line"></div><div class="line">&lt;/p&gt;</div><div class="line">	{{/each}}</div><div class="line">&lt;/<span class="keyword">template</span>&gt;</div></pre></figure>
+<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"index"</span>&gt;</span></div><div class="line">	{{#each comments}}</div><div class="line">		<span class="tag">&lt;<span class="title">p</span>&gt;</span>{{content}}<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line">	{{/each}}</div><div class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></div></pre></figure>
 
 <p>client/view/index.js</p>
 <figure class="highlight javascript"><pre><div class="line">Template.index.helper({</div><div class="line">	<span class="string">'comments'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">		<span class="keyword">return</span> Comment.find()</div><div class="line">	}</div><div class="line">})</div></pre></figure>
