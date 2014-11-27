@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Meteor中settings的设置方法 | _Phishing&#39;s blog</title>
+  <title>Express中Can&#39;t set headers after they are sent错误的解决方法 | _Phishing&#39;s blog</title>
   <meta name="description" content="Phishing's blog" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -227,7 +227,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">Meteor中settings的设置方法</a></li>
+                        <li id="navbar-title"><a href="#">Express中Can&#39;t set headers after they are sent错误的解决方法</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -256,43 +256,38 @@
                   <div class="tag-tile">
                       
                       
-                      <a data-pjax href='/tags/Meteor/' style='color:#D5D5D5'>Meteor</a>
+                      <a data-pjax href='/tags/nodejs/' style='color:#D5D5D5'>nodejs</a>
+                      
+                      <a data-pjax href='/tags/express/' style='color:#D5D5D5'>express</a>
                       
                       
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Meteor中settings的设置方法</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Express中Can't set headers after they are sent错误的解决方法</h1>
 
                     <div class="post-meta">
                         Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-10-09T06:30:57.000Z"
-                              itemprop="datePublished">10月 9 2014</time>
+                        <time datetime="2014-11-27T15:01:00.000Z"
+                              itemprop="datePublished">11月 27 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>在Meteor的实际开发中，可能会针对不同的服务器做相关的设置，但如果每次都是改源代码会显得很麻烦，也容易出错，于是Meteor.settings就横空出世了</p>
-<p>Meteor.settings的设置很简单</p>
-<p>首先在更目录下新建一个<code>settings.json</code>文件</p>
-<p>在文件中写入</p>
-<figure class="highlight json"><pre><div class="line">{</div><div class="line">	"<span class="attribute">foo</span>": <span class="value"><span class="string">"bar"</span></span></div><div class="line">}</div></pre></figure>
+            <p>我在实际开发中遇到了<code>express</code>的如下报错</p>
+<figure class="highlight"><pre><div class="line">Error: Can't <span class="operator"><span class="keyword">set</span> headers <span class="keyword">after</span> they <span class="keyword">are</span> sent.</span></div><div class="line">  <span class="keyword">at</span> ServerResponse.OutgoingMessage.setHeader (_http_outgoing.js:<span class="number">331</span>:<span class="number">11</span>)</div><div class="line">  <span class="keyword">at</span> ServerResponse.res.setHeader (/Users/phishing/Documents/Phishing/test/drifter/node_modules/express/node_modules/<span class="keyword">connect</span>/lib/patch.js:<span class="number">134</span>:<span class="number">22</span>)</div><div class="line">  <span class="keyword">at</span> ServerResponse.res.<span class="keyword">set</span>.res.header (/Users/phishing/Documents/Phishing/test/drifter/node_modules/express/lib/response.js:<span class="number">583</span>:<span class="number">10</span>)</div><div class="line">  <span class="keyword">at</span> ServerResponse.res.send (/Users/phishing/Documents/Phishing/test/drifter/node_modules/express/lib/response.js:<span class="number">144</span>:<span class="number">12</span>)</div><div class="line">  <span class="keyword">at</span> ServerResponse.res.json (/Users/phishing/Documents/Phishing/test/drifter/node_modules/express/lib/response.js:<span class="number">225</span>:<span class="number">15</span>)</div><div class="line">  <span class="keyword">at</span> /Users/phishing/Documents/Phishing/test/drifter/app.coffee:<span class="number">41</span>:<span class="number">16</span></div><div class="line">  <span class="keyword">at</span> Promise.&lt;anonymous&gt; (/Users/phishing/Documents/Phishing/test/drifter/models/mongodb.coffee:<span class="number">25</span>:<span class="number">3</span>)</div><div class="line">  <span class="keyword">at</span> Promise.&lt;anonymous&gt; (/Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mpromise/lib/promise.js:<span class="number">177</span>:<span class="number">8</span>)</div><div class="line">  <span class="keyword">at</span> Promise.EventEmitter.emit (<span class="keyword">events</span>.js:<span class="number">110</span>:<span class="number">17</span>)</div><div class="line">  <span class="keyword">at</span> Promise.emit (/Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mpromise/lib/promise.js:<span class="number">84</span>:<span class="number">38</span>)</div><div class="line">  <span class="keyword">at</span> Promise.fulfill (/Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mpromise/lib/promise.js:<span class="number">97</span>:<span class="number">20</span>)</div><div class="line">  <span class="keyword">at</span> handleSave (/Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/lib/model.js:<span class="number">133</span>:<span class="number">13</span>)</div><div class="line">  <span class="keyword">at</span> /Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/lib/utils.js:<span class="number">408</span>:<span class="number">16</span></div><div class="line">  <span class="keyword">at</span> /Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/core.js:<span class="number">125</span>:<span class="number">9</span></div><div class="line">  <span class="keyword">at</span> /Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mongodb/lib/mongodb/db.js:<span class="number">1157</span>:<span class="number">7</span></div><div class="line">  <span class="keyword">at</span> /Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mongodb/lib/mongodb/db.js:<span class="number">1890</span>:<span class="number">9</span></div><div class="line">  <span class="keyword">at</span> <span class="keyword">Server</span>.Base._callHandler (/Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mongodb/lib/mongodb/<span class="keyword">connection</span>/base.js:<span class="number">448</span>:<span class="number">41</span>)</div><div class="line">  <span class="keyword">at</span> /Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mongodb/lib/mongodb/<span class="keyword">connection</span>/<span class="keyword">server</span>.js:<span class="number">481</span>:<span class="number">18</span></div><div class="line">  <span class="keyword">at</span> [object Object].MongoReply.parseBody (/Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mongodb/lib/mongodb/responses/mongo_reply.js:<span class="number">68</span>:<span class="number">5</span>)</div><div class="line">  <span class="keyword">at</span> [object Object].&lt;anonymous&gt; (/Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mongodb/lib/mongodb/<span class="keyword">connection</span>/<span class="keyword">server</span>.js:<span class="number">439</span>:<span class="number">20</span>)</div><div class="line">  <span class="keyword">at</span> [object Object].EventEmitter.emit (<span class="keyword">events</span>.js:<span class="number">107</span>:<span class="number">17</span>)</div><div class="line">  <span class="keyword">at</span> [object Object].&lt;anonymous&gt; (/Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mongodb/lib/mongodb/<span class="keyword">connection</span>/connection_pool.js:<span class="number">201</span>:<span class="number">13</span>)</div><div class="line">  <span class="keyword">at</span> [object Object].EventEmitter.emit (<span class="keyword">events</span>.js:<span class="number">110</span>:<span class="number">17</span>)</div><div class="line">  <span class="keyword">at</span> Socket.&lt;anonymous&gt; (/Users/phishing/Documents/Phishing/test/drifter/node_modules/mongoose/node_modules/mongodb/lib/mongodb/<span class="keyword">connection</span>/<span class="keyword">connection</span>.js:<span class="number">439</span>:<span class="number">22</span>)</div><div class="line">  <span class="keyword">at</span> Socket.EventEmitter.emit (<span class="keyword">events</span>.js:<span class="number">107</span>:<span class="number">17</span>)</div><div class="line">  <span class="keyword">at</span> readableAddChunk (_stream_readable.js:<span class="number">159</span>:<span class="number">16</span>)</div><div class="line">  <span class="keyword">at</span> Socket.Readable.push (_stream_readable.js:<span class="number">126</span>:<span class="number">10</span>)</div><div class="line">  <span class="keyword">at</span> TCP.onread (net.js:<span class="number">514</span>:<span class="number">20</span>)</div></pre></figure>
 
-<p>然后在命令行中输入<code>meteor --settings settings.json</code>来启动项目，或者通过<code>meteor deploy --settings settings.json</code>来部署项目</p>
-<p>这样在Meteor的server端中键入<code>console.log(Meteor.settings.foo)</code>就会返回’bar’</p>
-<p>需要注意的就是，在<code>settings.json</code>中，一定要用严格的json格式，不能使用单引号，不然会出现<code>parse error reading settings file</code>的错误</p>
-<p>例如我正在写一个关于ldap的配置，具体信息如下</p>
-<figure class="highlight json"><pre><div class="line">{</div><div class="line">	"<span class="attribute">ldap</span>": <span class="value">{</span></div><div class="line">	    "<span class="attribute">url</span>": <span class="value"><span class="string">"ldap://my.ldapserver.com"</span></span>,</div><div class="line">	    "<span class="attribute">base</span>": <span class="value"><span class="string">"ou=people,dc=mydomain"</span></span>,</div><div class="line">	    "<span class="attribute">timeout</span>": <span class="value"><span class="number">10000</span></span>,</div><div class="line">	    "<span class="attribute">bindDn</span>": <span class="value"><span class="string">"cn=admin,dc=mydomain"</span></span>,</div><div class="line">	    "<span class="attribute">bindSecret</span>": <span class="value"><span class="string">"thesecret"</span></span>,</div><div class="line">	    "<span class="attribute">filter</span>": <span class="value"><span class="string">"(&(uid=%uid)(objectClass=inetOrgPerson))"</span></span>,</div><div class="line">	    "<span class="attribute">scope</span>": <span class="value"><span class="string">"one"</span></span>,</div><div class="line">	    "<span class="attribute">nameAttribute</span>": <span class="value"><span class="string">"displayName"</span></span>,</div><div class="line">	    "<span class="attribute">mailAttribute</span>": <span class="value"><span class="string">"mail"</span></span>,</div><div class="line">	    "<span class="attribute">forceUsername</span>": <span class="value"><span class="literal">true</span></span>,</div><div class="line">	    "<span class="attribute">throwError</span>": <span class="value"><span class="literal">true</span></span>,</div><div class="line">	    "<span class="attribute">supportedServices</span>": <span class="value">[<span class="string">"cas"</span>]</span></div><div class="line">  	}</div><div class="line">}</div></pre></figure>
-
-<p>这样写之后，你用<code>meteor --settings settings.json</code>来运行，打印你的<code>Meteor.settings</code>就能看见相关设置的信息了</p>
+<p>经查找后发现，是因为我在路由中触发了两次<code>res.json</code></p>
+<p>在<code>nodeJs实战</code>一书中的132页，在使用mongo储存瓶子之后，原作者只<code>return</code>出了<code>mongodb.save</code>函数，导致最后的<code>res.json(callback)</code>仍然执行，触发了上述错误</p>
+<p>解决办法很简单，只需在<code>mongodb.save</code>前面加一个’return’即可</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/10/11/Extending-Meteor-Accounts/">← Prev Post</a>
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
             
             <a class="share-button" data-original-title title>Share this Post</a>
             
-            <a data-pjax class="older-posts" href="/2014/10/03/Makefile/">Next Post →</a>
+            <a data-pjax class="older-posts" href="/2014/11/25/Redis的操作方法/">Next Post →</a>
             
         </nav>
         <br/>

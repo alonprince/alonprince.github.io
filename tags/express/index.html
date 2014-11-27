@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Meteor中settings的设置方法 | _Phishing&#39;s blog</title>
+  <title>Tag: express | _Phishing&#39;s blog</title>
   <meta name="description" content="Phishing's blog" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -227,7 +227,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">Meteor中settings的设置方法</a></li>
+                        <li id="navbar-title"><a href="#">undefined</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -246,63 +246,62 @@
 
 
 <!-- -->
-<!--<body class="post-template">-->
+<!--<body class="home-template">-->
 <!---->
-  
+  <div class="hello">
+    <div class="intro-me">
+        <h2>Phishing</h2>
+        <p>人们管这叫博客</p>
+        <a href="#content"></a>
+    </div>
+    <div class="triangle"></div> 
+</div>
+<main class="content" role="main" id="content">
 
-<main class="content" role="main">
-    <article class="post" >
-    <span class="post-meta">
-                  <div class="tag-tile">
-                      
-                      
-                      <a data-pjax href='/tags/Meteor/' style='color:#D5D5D5'>Meteor</a>
-                      
-                      
-                  </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Meteor中settings的设置方法</h1>
+    
+    <article class="post">
 
-                    <div class="post-meta">
-                        Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-10-09T06:30:57.000Z"
-                              itemprop="datePublished">10月 9 2014</time>
-                    </div>
-    </span>
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/nodejs/'>nodejs</a>
+                
+                <a data-pjax href='/tags/express/'>express</a>
+                
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/11/27/Express中Can-t-set-headers-after-they-are-sent错误的解决方法/">Express中Can't set headers after they are sent错误的解决方法</a>
+            </h1>
 
-        <section class="post-content">
-            <p>在Meteor的实际开发中，可能会针对不同的服务器做相关的设置，但如果每次都是改源代码会显得很麻烦，也容易出错，于是Meteor.settings就横空出世了</p>
-<p>Meteor.settings的设置很简单</p>
-<p>首先在更目录下新建一个<code>settings.json</code>文件</p>
-<p>在文件中写入</p>
-<figure class="highlight json"><pre><div class="line">{</div><div class="line">	"<span class="attribute">foo</span>": <span class="value"><span class="string">"bar"</span></span></div><div class="line">}</div></pre></figure>
-
-<p>然后在命令行中输入<code>meteor --settings settings.json</code>来启动项目，或者通过<code>meteor deploy --settings settings.json</code>来部署项目</p>
-<p>这样在Meteor的server端中键入<code>console.log(Meteor.settings.foo)</code>就会返回’bar’</p>
-<p>需要注意的就是，在<code>settings.json</code>中，一定要用严格的json格式，不能使用单引号，不然会出现<code>parse error reading settings file</code>的错误</p>
-<p>例如我正在写一个关于ldap的配置，具体信息如下</p>
-<figure class="highlight json"><pre><div class="line">{</div><div class="line">	"<span class="attribute">ldap</span>": <span class="value">{</span></div><div class="line">	    "<span class="attribute">url</span>": <span class="value"><span class="string">"ldap://my.ldapserver.com"</span></span>,</div><div class="line">	    "<span class="attribute">base</span>": <span class="value"><span class="string">"ou=people,dc=mydomain"</span></span>,</div><div class="line">	    "<span class="attribute">timeout</span>": <span class="value"><span class="number">10000</span></span>,</div><div class="line">	    "<span class="attribute">bindDn</span>": <span class="value"><span class="string">"cn=admin,dc=mydomain"</span></span>,</div><div class="line">	    "<span class="attribute">bindSecret</span>": <span class="value"><span class="string">"thesecret"</span></span>,</div><div class="line">	    "<span class="attribute">filter</span>": <span class="value"><span class="string">"(&(uid=%uid)(objectClass=inetOrgPerson))"</span></span>,</div><div class="line">	    "<span class="attribute">scope</span>": <span class="value"><span class="string">"one"</span></span>,</div><div class="line">	    "<span class="attribute">nameAttribute</span>": <span class="value"><span class="string">"displayName"</span></span>,</div><div class="line">	    "<span class="attribute">mailAttribute</span>": <span class="value"><span class="string">"mail"</span></span>,</div><div class="line">	    "<span class="attribute">forceUsername</span>": <span class="value"><span class="literal">true</span></span>,</div><div class="line">	    "<span class="attribute">throwError</span>": <span class="value"><span class="literal">true</span></span>,</div><div class="line">	    "<span class="attribute">supportedServices</span>": <span class="value">[<span class="string">"cas"</span>]</span></div><div class="line">  	}</div><div class="line">}</div></pre></figure>
-
-<p>这样写之后，你用<code>meteor --settings settings.json</code>来运行，打印你的<code>Meteor.settings</code>就能看见相关设置的信息了</p>
-
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-11-27T15:01:00.000Z"
+                      itemprop="datePublished">11月 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                我在实际开发中遇到了express的如下报错
+Error: Can't set headers after they are sent.  at ServerResponse.OutgoingMessage.setHeader (_http_outgoing.js:331:11)  at ServerResponse.res.setHeader (/Users/phishing/Documents/Phishing/test/drift
+                
+            </p>
+            
+            <p>
+                <a data-pjax href="/2014/11/27/Express中Can-t-set-headers-after-they-are-sent错误的解决方法/"
+                   class="excerpt-link">阅读全文...</a>
+            </p>
+            
         </section>
-        <hr/>
-        <nav class="pagination" style="width:auto" role="pagination">
-            
-            <a data-pjax class="newer-posts" href="/2014/10/11/Extending-Meteor-Accounts/">← Prev Post</a>
-            
-            <a class="share-button" data-original-title title>Share this Post</a>
-            
-            <a data-pjax class="older-posts" href="/2014/10/03/Makefile/">Next Post →</a>
-            
-        </nav>
-        <br/>
-        <br/>
-        <section id="comment">
-            <div id="comment-box"></div>
-        </section>
-
-
     </article>
+    
+    <nav class="pagination" role="pagination">
+        
+        <span class="page-number">Page  of </span>
+        
+    </nav>
 </main>
 
 
