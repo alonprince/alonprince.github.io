@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Archives: 2014/9 | _Phishing&#39;s blog</title>
+  <title>js中获取时间戳的方法 | _Phishing&#39;s blog</title>
   <meta name="description" content="Phishing's blog" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -233,7 +233,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">js中获取时间戳的方法</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -252,73 +252,68 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
-  <div class="hello">
-    <div class="intro-me">
-        <h2>Phishing</h2>
-        <p>人们管这叫博客</p>
-        <a href="#content"></a>
-    </div>
-    <div class="triangle"></div> 
-</div>
-<main class="content" role="main" id="content">
+  
 
-    
-    <article class="post">
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">js中获取时间戳的方法</h1>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/npm/'>npm</a>
-                
-                <a data-pjax href='/tags/nodejs/'>nodejs</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/28/npm网速慢的解决办法/">npm网速慢的解决办法</a>
-            </h1>
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-12-01T14:38:24.000Z"
+                              itemprop="datePublished">12月 1 2014</time>
+                    </div>
+    </span>
 
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-28T15:22:31.000Z"
-                      itemprop="datePublished">9月 28 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                国内经常会遇到npm特别慢的情况，可以通过下面的方式，更改npm的镜像
-通过下面命令设置镜像
-npm config set registry http://r.cnpmjs.org
-国内镜像：
+        <section class="post-content">
+            <p>最近用时间对象特别多，所以取时间戳就成了经常需要用到的方法了</p>
+<p>这里给列出几种我目前知道的关于获取时间戳的方法，应该是不全的</p>
+<h1 id="一，getTIme()">一，getTIme()</h1>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</div></pre></figure>
 
-http://r.cnpmjs.orghttp://registry.cnpmjs.orghttp://registry.npm.taobao.org
+<p>这个可能是被最多人所熟知的方法了，用时间对象的的<code>getTime</code>方法，直接获取时间戳</p>
+<h1 id="二，时间对象的隐式类型转换">二，时间对象的隐式类型转换</h1>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> oDate = <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line"><span class="keyword">var</span> time1 = +oDate</div><div class="line"><span class="keyword">var</span> time2 = oDate * <span class="number">1</span></div></pre></figure>
 
-官方镜像：
+<p>由于javascript属于弱类型语言，所以在计算时间对象的时候，js会默认把时间对象转化成数字时间戳</p>
+<h1 id="三，Date-now()">三，Date.now()</h1>
+<figure class="highlight"><pre><div class="line">var <span class="built_in">time</span> = <span class="built_in">Date</span>.<span class="built_in">now</span>()</div></pre></figure>
 
-https://registry.npmjs.org
+<p>时间对象提供的方法，获取当前的时间戳，不需要先去<code>new</code>一个对象</p>
+<h1 id="四，Date-parse()">四，Date.parse()</h1>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> time = <span class="built_in">Date</span>.parse(<span class="keyword">new</span> <span class="built_in">Date</span>())</div></pre></figure>
 
-常用的npm的命令
+<p>用时间对象提供的解析方法来解析新生成的时间对象【(╯‵□′)╯︵┻━┻多此一举啊混蛋</p>
+<h1 id="五，valueOf()">五，valueOf()</h1>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf()</div></pre></figure>
 
-                
-            </p>
-            
-            <p>
-                <a data-pjax href="/2014/09/28/npm网速慢的解决办法/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
-            
+<p>用valueOf来获取时间对象的值，返回的是时间戳</p>
+
         </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2014/11/27/Express中Can-t-set-headers-after-they-are-sent错误的解决方法/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page  of </span>
-        
-    </nav>
 </main>
 
 

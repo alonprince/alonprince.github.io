@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-11-27T15:05:24.021Z</updated>
+  <updated>2014-12-01T14:56:36.990Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -13,6 +13,44 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[js中获取时间戳的方法]]></title>
+    <link href="http://alonprince.github.io/2014/12/01/js%E4%B8%AD%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>http://alonprince.github.io/2014/12/01/js中获取时间戳的方法/</id>
+    <published>2014-12-01T14:38:24.000Z</published>
+    <updated>2014-12-01T14:56:30.000Z</updated>
+    <content type="html"><![CDATA[<p>最近用时间对象特别多，所以取时间戳就成了经常需要用到的方法了</p>
+<p>这里给列出几种我目前知道的关于获取时间戳的方法，应该是不全的</p>
+<h1 id="一，getTIme()">一，getTIme()</h1>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</div></pre></figure>
+
+<p>这个可能是被最多人所熟知的方法了，用时间对象的的<code>getTime</code>方法，直接获取时间戳</p>
+<h1 id="二，时间对象的隐式类型转换">二，时间对象的隐式类型转换</h1>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> oDate = <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line"><span class="keyword">var</span> time1 = +oDate</div><div class="line"><span class="keyword">var</span> time2 = oDate * <span class="number">1</span></div></pre></figure>
+
+<p>由于javascript属于弱类型语言，所以在计算时间对象的时候，js会默认把时间对象转化成数字时间戳</p>
+<h1 id="三，Date-now()">三，Date.now()</h1>
+<figure class="highlight"><pre><div class="line">var <span class="built_in">time</span> = <span class="built_in">Date</span>.<span class="built_in">now</span>()</div></pre></figure>
+
+<p>时间对象提供的方法，获取当前的时间戳，不需要先去<code>new</code>一个对象</p>
+<h1 id="四，Date-parse()">四，Date.parse()</h1>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> time = <span class="built_in">Date</span>.parse(<span class="keyword">new</span> <span class="built_in">Date</span>())</div></pre></figure>
+
+<p>用时间对象提供的解析方法来解析新生成的时间对象【(╯‵□′)╯︵┻━┻多此一举啊混蛋</p>
+<h1 id="五，valueOf()">五，valueOf()</h1>
+<figure class="highlight"><pre><div class="line"><span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf()</div></pre></figure>
+
+<p>用valueOf来获取时间对象的值，返回的是时间戳</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>最近用时间对象特别多，所以取时间戳就成了经常需要用到的方法了</p>
+<p>这里给列出几种我目前知道的关于获取时间戳的方法，应该是不全的</p>
+<h1 id="一，getTIme()">一，getTIme()</h1>
+<figure class="highlight">]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Express中Can't set headers after they are sent错误的解决方法]]></title>
