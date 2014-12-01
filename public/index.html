@@ -43,6 +43,14 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/12/01/js中获取时间戳的方法/">js中获取时间戳的方法</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/11/27/Express中Can-t-set-headers-after-they-are-sent错误的解决方法/">Express中Can&#39;t set headers after they are sent错误的解决方法</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/11/25/Redis的操作方法/">Redis的操作方法(转载)</a>
                                 </li>
                                 
@@ -98,7 +106,7 @@
                                 
                                 <li class="search-category-li mp-pjax">
                                     <a href="/categories/技术/">&nbsp;&nbsp;&nbsp;技术</a>
-                                    <small>8</small>
+                                    <small>9</small>
                                 </li>
                                 
                                 </div>
@@ -129,6 +137,11 @@
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/express/">&nbsp;&nbsp;&nbsp;express</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
                                     <a href="/tags/git/">&nbsp;&nbsp;&nbsp;git</a>
                                     <small>1</small>
                                 </li>
@@ -140,7 +153,7 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/nodejs/">&nbsp;&nbsp;&nbsp;nodejs</a>
-                                    <small>3</small>
+                                    <small>4</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
@@ -168,6 +181,10 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/12/01/js中获取时间戳的方法/">js中获取时间戳的方法</a>
+                
+                    <a  data-pjax href="/2014/11/27/Express中Can-t-set-headers-after-they-are-sent错误的解决方法/">Express中Can&#39;t set headers after they are sent错误的解决方法</a>
+                
                     <a  data-pjax href="/2014/11/25/Redis的操作方法/">Redis的操作方法(转载)</a>
                 
                     <a  data-pjax href="/2014/11/20/Meteor中由于活性数据造成多次调用的问题/">Meteor中由于活性数据造成多次调用的问题</a>
@@ -193,6 +210,8 @@
                     <a data-pjax href="/tags/Meteor/">&nbsp;&nbsp;Meteor</a>
                 
                     <a data-pjax href="/tags/Redis/">&nbsp;&nbsp;Redis</a>
+                
+                    <a data-pjax href="/tags/express/">&nbsp;&nbsp;express</a>
                 
                     <a data-pjax href="/tags/git/">&nbsp;&nbsp;git</a>
                 
@@ -245,6 +264,82 @@
 </div>
 <main class="content" role="main" id="content">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/12/01/js中获取时间戳的方法/">js中获取时间戳的方法</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-12-01T14:38:24.000Z"
+                      itemprop="datePublished">12月 1 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                最近用时间对象特别多，所以取时间戳就成了经常需要用到的方法了
+这里给列出几种我目前知道的关于获取时间戳的方法，应该是不全的
+一，getTIme()
+var time = new Date().getTime()
+
+这个可能是被最多人所熟知的方法了，用时间对象的的getTime方法，直接获取时间戳
+二，时间对象的隐式类型转换
+var oDate = new Date()var time1 = +oDatevar time2 = oDate
+                
+            </p>
+            
+            <p>
+                <a data-pjax href="/2014/12/01/js中获取时间戳的方法/"
+                   class="excerpt-link">阅读全文...</a>
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/nodejs/'>nodejs</a>
+                
+                <a data-pjax href='/tags/express/'>express</a>
+                
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/11/27/Express中Can-t-set-headers-after-they-are-sent错误的解决方法/">Express中Can't set headers after they are sent错误的解决方法</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-11-27T15:01:00.000Z"
+                      itemprop="datePublished">11月 27 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                我在实际开发中遇到了express的如下报错
+Error: Can't set headers after they are sent.  at ServerResponse.OutgoingMessage.setHeader (_http_outgoing.js:331:11)  at ServerResponse.res.setHeader (/Users/phishing/Documents/Phishing/test/drift
+                
+            </p>
+            
+            <p>
+                <a data-pjax href="/2014/11/27/Express中Can-t-set-headers-after-they-are-sent错误的解决方法/"
+                   class="excerpt-link">阅读全文...</a>
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
@@ -472,91 +567,6 @@ Meteor.settings的设置很简单
             
             <p>
                 <a data-pjax href="/2014/10/09/Meteor中settings的设置方法/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/nodejs/'>nodejs</a>
-                
-                <a data-pjax href='/tags/npm/'>npm</a>
-                
-                <a data-pjax href='/tags/linux/'>linux</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/10/03/Makefile/">Makefile的简单应用</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-10-03T14:52:38.000Z"
-                      itemprop="datePublished">10月 3 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                需求分析
-在编写nodejs的过程中，我们经常会遇到clone一个项目后，先要键入npm install来安装依赖，然后运行gulp(因为我觉得gulp的语法很简单，所以我只会gulp，还没研究过grunt)来生成相关编译后的静态文件，再使用node app来运行项目
-这种情况如果只是一次还好，但由于nodejs在每次项目文件更改过之后，需要中断进程，然后重启进程，这个过程如果循环很多遍，相信很多人都会疯掉，虽然后类似superviso
-                
-            </p>
-            
-            <p>
-                <a data-pjax href="/2014/10/03/Makefile/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/git/'>git</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/10/03/git命令小记/">git命令小记</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-10-03T04:28:25.000Z"
-                      itemprop="datePublished">10月 3 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                简要说明
-刚刚接触git，一直都不会用git，因为之前用的都是svn，目前正在学习nodejs，所以想把写的练习同步到github上，就查了下用法
-初始化
-git的初始化是
-$ git init
-
-这样系统就在当前目录生成了一个.git目录
-首次使用git你可能还需要配置一下git
-你可以使用以下命令来配置你git的常用昵称和邮箱
-$ git config --global user.name "Phishing"$ git confi
-                
-            </p>
-            
-            <p>
-                <a data-pjax href="/2014/10/03/git命令小记/"
                    class="excerpt-link">阅读全文...</a>
             </p>
             
