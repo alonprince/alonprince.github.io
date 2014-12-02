@@ -43,7 +43,7 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/12/02/在Meteor的registerHelper中需要注意的坑/">在Meteor的registerHelper中需要注意的坑</a>
+                                    <a href="/2014/12/02/在Meteor的registerHelper中需要注意的坑/">在Meteor的Template.helper中需要注意的坑</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -190,7 +190,7 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
-                    <a  data-pjax href="/2014/12/02/在Meteor的registerHelper中需要注意的坑/">在Meteor的registerHelper中需要注意的坑</a>
+                    <a  data-pjax href="/2014/12/02/在Meteor的registerHelper中需要注意的坑/">在Meteor的Template.helper中需要注意的坑</a>
                 
                     <a  data-pjax href="/2014/12/01/js中获取时间戳的方法/">js中获取时间戳的方法</a>
                 
@@ -289,7 +289,7 @@
                 
                 <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
             </div>
-            <h1 class="post-title"><a data-pjax href="/2014/12/02/在Meteor的registerHelper中需要注意的坑/">在Meteor的registerHelper中需要注意的坑</a>
+            <h1 class="post-title"><a data-pjax href="/2014/12/02/在Meteor的registerHelper中需要注意的坑/">在Meteor的Template.helper中需要注意的坑</a>
             </h1>
 
             <div class="post-meta">
@@ -302,9 +302,9 @@
             <p>
                 
                 问题详情
-在Meteor中，由于某些特性，会使registerHelper变得很便捷，用起来很舒服
+在Meteor中，由于某些特性，会使{{foo bar}}配合registerHelper变得很便捷，用起来很舒服
 但是这东西会有些小坑，这些小坑是API中未曾提到的（可能是我没看到）
-从Meteor 0.6起，registerHelper这个方法已经换了好几个绑定的对象了，从最开始的Handerbars.registerHelper到UI.registerHelper再到Blaze.registerHelper最后到现在的Template.regis
+从Meteor 0.6起，registerHelper这个方法已经换了好几个绑定的对象了，从最开始的Handerbars.registerHelper到UI.registerHelper再到Blaze.registerHelper最后到现在的T
                 
             </p>
             
