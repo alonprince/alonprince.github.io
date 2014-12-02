@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-12-01T15:00:19.710Z</updated>
+  <updated>2014-12-02T03:35:51.792Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -15,11 +15,44 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[在Meteor的registerHelper中需要注意的坑]]></title>
+    <link href="http://alonprince.github.io/2014/12/02/%E5%9C%A8Meteor%E7%9A%84registerHelper%E4%B8%AD%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/"/>
+    <id>http://alonprince.github.io/2014/12/02/在Meteor的registerHelper中需要注意的坑/</id>
+    <published>2014-12-02T03:15:57.000Z</published>
+    <updated>2014-12-02T03:34:25.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="问题详情">问题详情</h1>
+<p>在<code>Meteor</code>中，由于某些特性，会使<code>registerHelper</code>变得很便捷，用起来很舒服</p>
+<p>但是这东西会有些小坑，这些小坑是API中未曾提到的（可能是我没看到）</p>
+<p>从<code>Meteor 0.6</code>起，<code>registerHelper</code>这个方法已经换了好几个绑定的对象了，从最开始的<code>Handerbars.registerHelper</code>到<code>UI.registerHelper</code>再到<code>Blaze.registerHelper</code>最后到现在的<code>Template.registerHelper</code>，整个人都凌乱了好吗！</p>
+<p><code>registerHelper</code>的用法是<code>Template.registerHelper(name, function)</code>，<code>function</code>中传递的参数就是调用时<code>{{&gt; foo bar}}</code>传递的参数，我在开发的时候遇到过这种问题，当我将<code>function</code>中传递进来的参数取名叫<code>kind</code>的时候，就会发生意想不到的事情</p>
+<p>定义：</p>
+<figure class="highlight"><pre><div class="line">Template.registerHelper(<span class="string">'foo'</span>, <span class="function"><span class="keyword">function</span><span class="params">(kind)</span> </span>{</div><div class="line">	<span class="built_in">console</span>.log(kind)</div><div class="line">})</div></pre></figure>
+
+<p>调用：</p>
+<figure class="highlight"><pre><div class="line">&lt;<span class="keyword">template</span> name=<span class="string">"index"</span>&gt;</div><div class="line">	&lt;p&gt;{{foo 'bar'}}&lt;/p&gt;</div><div class="line">&lt;/<span class="keyword">template</span>&gt;</div></pre></figure>
+
+<p>结果<code>kind</code>打印出来的结果不是<code>&#39;bar&#39;</code>，而是<code>&#39;Template_index&#39;</code>，也就是说，当<code>function</code>的形参起名叫<code>&#39;kind&#39;</code>的时候，实参传递到这个形参上的值，不是实参的值，而是<code>&#39;Template_&#39; + 模板的名字</code></p>
+<h1 id="解决办法">解决办法</h1>
+<p>把<code>kind</code>换成其他名字(❁´▽`❁)</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="问题详情">问题详情</h1>
+<p>在<code>Meteor</code>中，由于某些特性，会使<code>registerHelper</code>变得很便捷，用起来很舒服</p>
+<p>但是这东西会有些小坑，这些小坑是API中未曾提到的（可能是我没看到）<]]>
+    </summary>
+    
+      <category term="Meteor" scheme="http://alonprince.github.io/tags/Meteor/"/>
+    
+      <category term="技术" scheme="http://alonprince.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[js中获取时间戳的方法]]></title>
     <link href="http://alonprince.github.io/2014/12/01/js%E4%B8%AD%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E6%96%B9%E6%B3%95/"/>
     <id>http://alonprince.github.io/2014/12/01/js中获取时间戳的方法/</id>
     <published>2014-12-01T14:38:24.000Z</published>
-    <updated>2014-12-01T15:00:14.000Z</updated>
+    <updated>2014-12-02T03:16:20.000Z</updated>
     <content type="html"><![CDATA[<p>最近用时间对象特别多，所以取时间戳就成了经常需要用到的方法了</p>
 <p>这里给列出几种我目前知道的关于获取时间戳的方法，应该是不全的</p>
 <h1 id="一，getTime()">一，getTime()</h1>
@@ -49,6 +82,10 @@
 <h1 id="一，getTime()">一，getTime()</h1>
 <figure class="highlight">]]>
     </summary>
+    
+      <category term="js" scheme="http://alonprince.github.io/tags/js/"/>
+    
+      <category term="技术" scheme="http://alonprince.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
