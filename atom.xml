@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-12-02T03:39:41.502Z</updated>
+  <updated>2014-12-02T03:41:10.284Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://alonprince.github.io/2014/12/02/%E5%9C%A8Meteor%E7%9A%84registerHelper%E4%B8%AD%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9D%91/"/>
     <id>http://alonprince.github.io/2014/12/02/在Meteor的registerHelper中需要注意的坑/</id>
     <published>2014-12-02T03:15:57.000Z</published>
-    <updated>2014-12-02T03:39:27.000Z</updated>
+    <updated>2014-12-02T03:40:59.000Z</updated>
     <content type="html"><![CDATA[<h1 id="问题详情">问题详情</h1>
 <p>在<code>Meteor</code>中，由于某些特性，会使<code>registerHelper</code>变得很便捷，用起来很舒服</p>
 <p>但是这东西会有些小坑，这些小坑是API中未曾提到的（可能是我没看到）</p>
@@ -42,8 +42,6 @@
     </summary>
     
       <category term="Meteor" scheme="http://alonprince.github.io/tags/Meteor/"/>
-    
-      <category term="nodejs" scheme="http://alonprince.github.io/tags/nodejs/"/>
     
       <category term="技术" scheme="http://alonprince.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
