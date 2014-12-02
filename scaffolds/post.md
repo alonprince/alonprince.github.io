@@ -1,5 +1,5 @@
 title: {{ title }}
 date: {{ date }}
-categories:
+categories: 技术
 tags:
 ---
