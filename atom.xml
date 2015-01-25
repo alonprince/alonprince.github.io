@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2014-12-02T03:54:26.196Z</updated>
+  <updated>2015-01-25T07:57:12.937Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -13,6 +13,39 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Ionic中使用emulate android报错的问题]]></title>
+    <link href="http://alonprince.github.io/2015/01/24/Ionic%E4%B8%AD%E4%BD%BF%E7%94%A8emulate-android%E6%8A%A5%E9%94%99%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://alonprince.github.io/2015/01/24/Ionic中使用emulate-android报错的问题/</id>
+    <published>2015-01-24T15:18:42.000Z</published>
+    <updated>2015-01-25T07:57:07.000Z</updated>
+    <content type="html"><![CDATA[<p>我在预览Android应用的时候，发现不能正常预览，弹出错误，提示类似让我创建一个Android服务之类的错误，提示我使用<code>android create avd --name &lt;yourname&gt; --target &lt;targetId&gt;</code>来创建</p>
+<p>在百度了之后，发现创建方法如下：</p>
+<figure class="highlight"><pre><div class="line">$ Android <span class="keyword">list</span> targets</div></pre></figure>
+
+<p>会列出如下列表：</p>
+<figure class="highlight"><pre><div class="line"><span class="comment">----------</span></div><div class="line">id: <span class="number">1</span> <span class="keyword">or</span> <span class="string">"android-8"</span></div><div class="line">     Name: Android <span class="number">2.2</span></div><div class="line">     <span class="keyword">Type</span>: Platform</div><div class="line">     API level: <span class="number">8</span></div><div class="line">     Revision: <span class="number">3</span></div><div class="line">     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WVGA800 (<span class="keyword">default</span>), WVGA854</div><div class="line"> Tag/ABIs : <span class="keyword">default</span>/armeabi</div><div class="line"><span class="comment">----------</span></div><div class="line">id: <span class="number">2</span> <span class="keyword">or</span> <span class="string">"android-19"</span></div><div class="line">     Name: Android <span class="number">4.4</span><span class="number">.2</span></div><div class="line">     <span class="keyword">Type</span>: Platform</div><div class="line">     API level: <span class="number">19</span></div><div class="line">     Revision: <span class="number">3</span></div><div class="line">     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (<span class="keyword">default</span>), WVGA854, WXGA720, WXGA800, WXGA800-<span class="number">7</span><span class="keyword">in</span></div><div class="line"> Tag/ABIs : <span class="keyword">default</span>/armeabi-v7a</div><div class="line"><span class="comment">----------</span></div><div class="line">id: <span class="number">3</span> <span class="keyword">or</span> <span class="string">"Google Inc.:Google APIs:8"</span></div><div class="line">     Name: Google APIs</div><div class="line">     <span class="keyword">Type</span>: Add-<span class="keyword">On</span></div><div class="line">     Vendor: Google Inc.</div><div class="line">     Revision: <span class="number">2</span></div><div class="line">     Description: Android + Google APIs</div><div class="line">     Based <span class="keyword">on</span> Android <span class="number">2.2</span> (API level <span class="number">8</span>)</div><div class="line">     Libraries:</div><div class="line">      * com.google.android.maps (maps.jar)</div><div class="line">          API <span class="keyword">for</span> Google Maps</div><div class="line">     Skins: HVGA, WQVGA400, QVGA, WVGA800 (<span class="keyword">default</span>), WQVGA432, WVGA854</div><div class="line"> Tag/ABIs : <span class="keyword">default</span>/armeabi</div></pre></figure>
+
+<p>然后选好你需要的Android平台版本，记住id，创建即可，我使用的是平台版本为4.4.2的，即targetid为2</p>
+<figure class="highlight"><pre><div class="line"><span class="comment">$</span> <span class="comment">android</span> <span class="comment">create</span> <span class="comment">avd</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">name</span> <span class="comment">test</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">target</span> <span class="comment">2</span></div></pre></figure>
+
+<p>创建好后，再使用</p>
+<figure class="highlight"><pre><div class="line"><span class="variable">$ </span>ionic emulate android</div></pre></figure>
+
+<p>即可成功预览咯<br>PS:安卓虚拟机可真是卡顿的没话说啊。。。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>我在预览Android应用的时候，发现不能正常预览，弹出错误，提示类似让我创建一个Android服务之类的错误，提示我使用<code>android create avd --name &lt;yourname&gt; --target &lt;targetId&gt;</]]>
+    </summary>
+    
+      <category term="hybird app" scheme="http://alonprince.github.io/tags/hybird-app/"/>
+    
+      <category term="ionic" scheme="http://alonprince.github.io/tags/ionic/"/>
+    
+      <category term="技术" scheme="http://alonprince.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[在Meteor的Template.helper中需要注意的坑]]></title>

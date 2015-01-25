@@ -43,6 +43,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/24/Ionic中使用emulate-android报错的问题/">Ionic中使用emulate android报错的问题</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/12/02/在Meteor的registerHelper中需要注意的坑/">在Meteor的Template.helper中需要注意的坑</a>
                                 </li>
                                 
@@ -110,7 +114,7 @@
                                 
                                 <li class="search-category-li mp-pjax">
                                     <a href="/categories/技术/">&nbsp;&nbsp;&nbsp;技术</a>
-                                    <small>11</small>
+                                    <small>12</small>
                                 </li>
                                 
                                 </div>
@@ -147,6 +151,16 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/git/">&nbsp;&nbsp;&nbsp;git</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/hybird-app/">&nbsp;&nbsp;&nbsp;hybird app</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/ionic/">&nbsp;&nbsp;&nbsp;ionic</a>
                                     <small>1</small>
                                 </li>
                                 
@@ -190,6 +204,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2015/01/24/Ionic中使用emulate-android报错的问题/">Ionic中使用emulate android报错的问题</a>
+                
                     <a  data-pjax href="/2014/12/02/在Meteor的registerHelper中需要注意的坑/">在Meteor的Template.helper中需要注意的坑</a>
                 
                     <a  data-pjax href="/2014/12/01/js中获取时间戳的方法/">js中获取时间戳的方法</a>
@@ -225,6 +241,10 @@
                     <a data-pjax href="/tags/express/">&nbsp;&nbsp;express</a>
                 
                     <a data-pjax href="/tags/git/">&nbsp;&nbsp;git</a>
+                
+                    <a data-pjax href="/tags/hybird-app/">&nbsp;&nbsp;hybird app</a>
+                
+                    <a data-pjax href="/tags/ionic/">&nbsp;&nbsp;ionic</a>
                 
                     <a data-pjax href="/tags/js/">&nbsp;&nbsp;js</a>
                 
@@ -277,6 +297,48 @@
 </div>
 <main class="content" role="main" id="content">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/hybird-app/'>hybird app</a>
+                
+                <a data-pjax href='/tags/ionic/'>ionic</a>
+                
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2015/01/24/Ionic中使用emulate-android报错的问题/">Ionic中使用emulate android报错的问题</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2015-01-24T15:18:42.000Z"
+                      itemprop="datePublished">1月 24 2015</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                我在预览Android应用的时候，发现不能正常预览，弹出错误，提示类似让我创建一个Android服务之类的错误，提示我使用android create avd --name &lt;yourname&gt; --target &lt;targetId&gt;来创建
+在百度了之后，发现创建方法如下：
+$ Android list targets
+
+会列出如下列表：
+----------id: 1 or "android-8"     Na
+                
+            </p>
+            
+            <p>
+                <a data-pjax href="/2015/01/24/Ionic中使用emulate-android报错的问题/"
+                   class="excerpt-link">阅读全文...</a>
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
@@ -542,45 +604,6 @@ git clone git://github.com/felixge/n
             
             <p>
                 <a data-pjax href="/2014/10/13/关于在Meteor中写自定义登录需要注意的地方/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/Meteor/'>Meteor</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/10/11/Extending-Meteor-Accounts/">扩展Meteor的用户系统</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-10-11T06:14:29.000Z"
-                      itemprop="datePublished">10月 11 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                简要说明
-本文是翻译MeteorHacks的一篇关于Meteor中Accounts的文章,原文见这里
-正文
-Meteor有一个非常好的用户认证系统，称之为Accounts。这个认证系统不仅仅为用密码、facebook、twitter和其他平台提供了强大的方法，还因为其与Meteor的核心服务相关联，从而提供高级别的安全。
-好的，但是如果你想添加一个自定义的验证方法呢？Meteor没有给你足够的信息让你这么做。所以我(原作者)开始研究Me
-                
-            </p>
-            
-            <p>
-                <a data-pjax href="/2014/10/11/Extending-Meteor-Accounts/"
                    class="excerpt-link">阅读全文...</a>
             </p>
             
