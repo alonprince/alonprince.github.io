@@ -51,13 +51,13 @@ var styles = StyleSheet.create({
 
 你可以在其间做一些判断
 
-```
+```html
 <View style={[style.base, this.state.active && styles.active]} />
 ```
 
 如果非到不得已的情况，你还可以在style中添加对象，但这特别容易混淆，不建议你这么做
 
-```
+```html
 <View style={[styles.base, {
     width: this.state.width,
     height: this.state.width * this.state.aspectRatio
@@ -69,7 +69,7 @@ var styles = StyleSheet.create({
 
 为了使你指定的样式在你的组件中使用，你需要传递style，使用`View.propTypes.style`和`Text.propTypes.style`来传递，注意，你需要确认传递的仅可能是样式
 
-```
+```html
 var List = React.createClass({
   propTypes: {
     style: View.propTypes.style,
