@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2015-01-25T08:08:03.003Z</updated>
+  <updated>2015-04-09T02:26:59.924Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -13,6 +13,82 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[学习React Native(Guide部分)]]></title>
+    <link href="http://alonprince.github.io/2015/04/08/%E5%AD%A6%E4%B9%A0React-Native/"/>
+    <id>http://alonprince.github.io/2015/04/08/学习React-Native/</id>
+    <published>2015-04-08T15:13:01.000Z</published>
+    <updated>2015-04-09T02:26:48.000Z</updated>
+    <content type="html"><![CDATA[<p>本文为学习<code>React Native</code>的笔记整理而成，仅做个人备忘使用</p>
+<h1 id="样式">样式</h1>
+<h2 id="声明样式">声明样式</h2>
+<p>在<code>React Native</code>中声明样式的方法如下：</p>
+<figure class="highlight javascript"><pre><div class="line"><span class="keyword">var</span> styles = StyleSheet.create({</div><div class="line">  base: {</div><div class="line">    width: <span class="number">38</span>,</div><div class="line">    height: <span class="number">38</span>,</div><div class="line">  },</div><div class="line">  background: {</div><div class="line">    backgroundColor: <span class="string">'#222222'</span>,</div><div class="line">  },</div><div class="line">  active: {</div><div class="line">    borderWidth: <span class="number">2</span>,</div><div class="line">    borderColor: <span class="string">'#00ff00'</span>,</div><div class="line">  },</div><div class="line">});</div></pre></figure>
+
+<p>使用<code>StyleSheet.create</code>来构造样式，传入对象作为参数。要确保值是定值且把模糊的类型转换成明确的数字类型。写完之后要保证每个只定义过一次。</p>
+<h2 id="使用样式">使用样式</h2>
+<p>主要的使用方法即是给style属性赋值</p>
+<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">Text</span> <span class="attribute">style</span>=<span class="value">{styles.base}</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">View</span> <span class="attribute">style</span>=<span class="value">{styles.background}</span> /&gt;</span></div></pre></figure>
+
+<p>也可以给style用数组赋值</p>
+<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">View</span> <span class="attribute">style</span>=<span class="value">{[styles.base,</span> <span class="attribute">styles.background</span>]} /&gt;</span></div></pre></figure>
+
+<p>你可以在其间做一些判断</p>
+<figure class="highlight"><pre><div class="line">&lt;View style={[style.<span class="keyword">base</span>, <span class="keyword">this</span>.state.active && styles.active]} /&gt;</div></pre></figure>
+
+<p>如果非到不得已的情况，你还可以在style中添加对象，但这特别容易混淆，不建议你这么做</p>
+<figure class="highlight"><pre><div class="line">&lt;View style={[styles.<span class="keyword">base</span>, {</div><div class="line">    width: <span class="keyword">this</span>.state.width,</div><div class="line">    height: <span class="keyword">this</span>.state.width * <span class="keyword">this</span>.state.aspectRatio</div><div class="line">}]} /&gt;</div></pre></figure>
+
+<h2 id="传递style">传递style</h2>
+<p>为了使你指定的样式在你的组件中使用，你需要传递style，使用<code>View.propTypes.style</code>和<code>Text.propTypes.style</code>来传递，注意，你需要确认传递的仅可能是样式</p>
+<figure class="highlight"><pre><div class="line">var List = React.createClass({</div><div class="line">  propTypes: {</div><div class="line">    style: View.propTypes.style,</div><div class="line">    elementStyle: View.propTypes.style,</div><div class="line">  },</div><div class="line">  render: <span class="keyword">function</span>() {</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style={this.props.style}&gt;</div><div class="line">        {elements.map((element) =&gt;</div><div class="line">          &lt;View style={[styles.element, this.props.elementStyle]} /&gt;</div><div class="line">        )}</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  }</div><div class="line">});</div><div class="line"></div><div class="line">// <span class="keyword">...</span> <span class="keyword">in</span> another file <span class="keyword">...</span></div><div class="line">&lt;List style={styles.list} elementStyle={styles.listElement} /&gt;</div></pre></figure>
+
+<h1 id="手势响应系统">手势响应系统</h1>
+<p>在手机上，手势响应比web上要复杂的多。一个触控可能经历好几个阶段才能定义出用于的意图。例如，app需要判定这个操作是在控件上上下滑动还是左右侧滑或是触碰。并且这些操作可能在操作的过程中更改，甚至存在多点触控的情况。</p>
+<p>触摸响应系统使组件去判定这些触摸共同作用，并且不考虑附加的情况，例如父或子组件。<br>这个系统被定义在<code>ResponderEventPlugin.js</code>中。</p>
+<h2 id="最佳实践">最佳实践</h2>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>本文为学习<code>React Native</code>的笔记整理而成，仅做个人备忘使用</p>
+<h1 id="样式">样式</h1>
+<h2 id="声明样式">声明样式</h2>
+<p>在<code>React Native</code>中声明样式的方法如下：</]]>
+    </summary>
+    
+      <category term="React Native" scheme="http://alonprince.github.io/tags/React-Native/"/>
+    
+      <category term="iOS" scheme="http://alonprince.github.io/tags/iOS/"/>
+    
+      <category term="技术" scheme="http://alonprince.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[iron-router用法解析]]></title>
+    <link href="http://alonprince.github.io/2015/02/08/iron-router%E7%94%A8%E6%B3%95%E8%A7%A3%E6%9E%90/"/>
+    <id>http://alonprince.github.io/2015/02/08/iron-router用法解析/</id>
+    <published>2015-02-08T08:14:09.000Z</published>
+    <updated>2015-02-09T08:28:47.000Z</updated>
+    <content type="html"><![CDATA[<p>有一段时间没写BLOG了，也有好久没有关注Meteor生态圈了，这次来写一下Meteor中的<code>Iron-router</code>。下面写的例子是为了方便自己记忆的，所以写的不够完善，想了解详细的情况还是得看官方的<a href="https://github.com/EventedMind/iron-router/blob/devel/Guide.md" target="_blank" rel="external">Guide</a></p>
+<p>以下是几个官方例子，我会尽可能的讲明白。。</p>
+<h1 id="基本操作"><a href="https://github.com/EventedMind/iron-router/blob/devel/examples%2Fbasic%2Fbasic.js" target="_blank" rel="external">基本操作</a></h1>
+<p>官方代码:</p>
+<figure class="highlight javascript"><pre><div class="line">Router.route(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">  <span class="comment">// 用{data: {title: 'My Title'}}去渲染Home模板</span></div><div class="line">  <span class="keyword">this</span>.render(<span class="string">'Home'</span>, {data: {title: <span class="string">'My Title'</span>}});</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// 当你访问路由"/one"的时候将会自动加载名为one的模板。</span></div><div class="line">Router.route(<span class="string">'/one'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 当你访问路由"/two"的时候将会自动加载名为two的模板。</span></div><div class="line">Router.route(<span class="string">'/two'</span>);</div></pre></figure>
+
+<p>上面的例子是<code>Router</code>的基本用法，用<code>Router.route</code>来定义一个路由，这个方法传递两个参数，第一个参数是<em>路径地址</em>，第二个参数是一个匿名函数，主要是配置该路由的。例如以上代码中，<code>this.render(&#39;Home&#39;, {data: {title: &#39;My Title&#39;}});</code>代表的意思是用{data: {title: ‘My Title’}}去渲染Home模板。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>有一段时间没写BLOG了，也有好久没有关注Meteor生态圈了，这次来写一下Meteor中的<code>Iron-router</code>。下面写的例子是为了方便自己记忆的，所以写的不够完善，想了解详细的情况还是得看官方的<a href="https://github.c]]>
+    </summary>
+    
+      <category term="Meteor" scheme="http://alonprince.github.io/tags/Meteor/"/>
+    
+      <category term="路由" scheme="http://alonprince.github.io/tags/%E8%B7%AF%E7%94%B1/"/>
+    
+      <category term="技术" scheme="http://alonprince.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Ionic中使用emulate android报错的问题]]></title>

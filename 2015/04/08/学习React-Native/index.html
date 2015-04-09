@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Tag: Redis | _Phishing&#39;s blog</title>
+  <title>学习React Native(Guide部分) | _Phishing&#39;s blog</title>
   <meta name="description" content="Phishing's blog" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -299,7 +299,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">学习React Native(Guide部分)</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -318,62 +318,80 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
-  <div class="hello">
-    <div class="intro-me">
-        <h2>Phishing</h2>
-        <p>人们管这叫博客</p>
-        <a href="#content"></a>
-    </div>
-    <div class="triangle"></div> 
-</div>
-<main class="content" role="main" id="content">
+  
 
-    
-    <article class="post">
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/React-Native/' style='color:#D5D5D5'>React Native</a>
+                      
+                      <a data-pjax href='/tags/iOS/' style='color:#D5D5D5'>iOS</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">学习React Native(Guide部分)</h1>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/数据库/'>数据库</a>
-                
-                <a data-pjax href='/tags/Redis/'>Redis</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/11/25/Redis的操作方法/">Redis的操作方法(转载)</a>
-            </h1>
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2015-04-08T15:13:01.000Z"
+                              itemprop="datePublished">4月 8 2015</time>
+                    </div>
+    </span>
 
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-11-25T14:21:08.000Z"
-                      itemprop="datePublished">11月 25 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                Redis命令总结
-转载自(http://blog.lunastudio.cn/?p=153)[http://blog.lunastudio.cn/?p=153]Redis提供了丰富的命令（command）对数据库和各种数据类型进行操作，这些command可以在Linux终端使用。在编程时，比如使用Redis 的Java语言包，这些命令都有对应的方法，比如上面例子中使用的sadd方法，就是对集合操作中的SADD命令。下面将Redis提供
-                
-            </p>
-            
-            <p>
-                <a data-pjax href="/2014/11/25/Redis的操作方法/"
-                   class="excerpt-link">阅读全文...</a>
-            </p>
-            
+        <section class="post-content">
+            <p>本文为学习<code>React Native</code>的笔记整理而成，仅做个人备忘使用</p>
+<h1 id="样式">样式</h1>
+<h2 id="声明样式">声明样式</h2>
+<p>在<code>React Native</code>中声明样式的方法如下：</p>
+<figure class="highlight javascript"><pre><div class="line"><span class="keyword">var</span> styles = StyleSheet.create({</div><div class="line">  base: {</div><div class="line">    width: <span class="number">38</span>,</div><div class="line">    height: <span class="number">38</span>,</div><div class="line">  },</div><div class="line">  background: {</div><div class="line">    backgroundColor: <span class="string">'#222222'</span>,</div><div class="line">  },</div><div class="line">  active: {</div><div class="line">    borderWidth: <span class="number">2</span>,</div><div class="line">    borderColor: <span class="string">'#00ff00'</span>,</div><div class="line">  },</div><div class="line">});</div></pre></figure>
+
+<p>使用<code>StyleSheet.create</code>来构造样式，传入对象作为参数。要确保值是定值且把模糊的类型转换成明确的数字类型。写完之后要保证每个只定义过一次。</p>
+<h2 id="使用样式">使用样式</h2>
+<p>主要的使用方法即是给style属性赋值</p>
+<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">Text</span> <span class="attribute">style</span>=<span class="value">{styles.base}</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">View</span> <span class="attribute">style</span>=<span class="value">{styles.background}</span> /&gt;</span></div></pre></figure>
+
+<p>也可以给style用数组赋值</p>
+<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">View</span> <span class="attribute">style</span>=<span class="value">{[styles.base,</span> <span class="attribute">styles.background</span>]} /&gt;</span></div></pre></figure>
+
+<p>你可以在其间做一些判断</p>
+<figure class="highlight"><pre><div class="line">&lt;View style={[style.<span class="keyword">base</span>, <span class="keyword">this</span>.state.active && styles.active]} /&gt;</div></pre></figure>
+
+<p>如果非到不得已的情况，你还可以在style中添加对象，但这特别容易混淆，不建议你这么做</p>
+<figure class="highlight"><pre><div class="line">&lt;View style={[styles.<span class="keyword">base</span>, {</div><div class="line">    width: <span class="keyword">this</span>.state.width,</div><div class="line">    height: <span class="keyword">this</span>.state.width * <span class="keyword">this</span>.state.aspectRatio</div><div class="line">}]} /&gt;</div></pre></figure>
+
+<h2 id="传递style">传递style</h2>
+<p>为了使你指定的样式在你的组件中使用，你需要传递style，使用<code>View.propTypes.style</code>和<code>Text.propTypes.style</code>来传递，注意，你需要确认传递的仅可能是样式</p>
+<figure class="highlight"><pre><div class="line">var List = React.createClass({</div><div class="line">  propTypes: {</div><div class="line">    style: View.propTypes.style,</div><div class="line">    elementStyle: View.propTypes.style,</div><div class="line">  },</div><div class="line">  render: <span class="keyword">function</span>() {</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style={this.props.style}&gt;</div><div class="line">        {elements.map((element) =&gt;</div><div class="line">          &lt;View style={[styles.element, this.props.elementStyle]} /&gt;</div><div class="line">        )}</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  }</div><div class="line">});</div><div class="line"></div><div class="line">// <span class="keyword">...</span> <span class="keyword">in</span> another file <span class="keyword">...</span></div><div class="line">&lt;List style={styles.list} elementStyle={styles.listElement} /&gt;</div></pre></figure>
+
+<h1 id="手势响应系统">手势响应系统</h1>
+<p>在手机上，手势响应比web上要复杂的多。一个触控可能经历好几个阶段才能定义出用于的意图。例如，app需要判定这个操作是在控件上上下滑动还是左右侧滑或是触碰。并且这些操作可能在操作的过程中更改，甚至存在多点触控的情况。</p>
+<p>触摸响应系统使组件去判定这些触摸共同作用，并且不考虑附加的情况，例如父或子组件。<br>这个系统被定义在<code>ResponderEventPlugin.js</code>中。</p>
+<h2 id="最佳实践">最佳实践</h2>
+
         </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2015/02/08/iron-router用法解析/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page  of </span>
-        
-    </nav>
 </main>
 
 
