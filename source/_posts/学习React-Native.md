@@ -89,3 +89,14 @@ var List = React.createClass({
 // ... in another file ...
 <List style={styles.list} elementStyle={styles.listElement} />
 ```
+
+手势响应系统
+===========
+
+在手机上，手势响应比web上要复杂的多。一个触控可能经历好几个阶段才能定义出用于的意图。例如，app需要判定这个操作是在控件上上下滑动还是左右侧滑或是触碰。并且这些操作可能在操作的过程中更改，甚至存在多点触控的情况。
+
+触摸响应系统使组件去判定这些触摸共同作用，并且不考虑附加的情况，例如父或子组件。
+这个系统被定义在`ResponderEventPlugin.js`中。
+
+最佳实践
+------------
