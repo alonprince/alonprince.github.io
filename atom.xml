@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Phishing's blog]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://alonprince.github.io/"/>
-  <updated>2015-04-09T02:26:59.924Z</updated>
+  <updated>2015-04-09T02:31:31.315Z</updated>
   <id>http://alonprince.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://alonprince.github.io/2015/04/08/%E5%AD%A6%E4%B9%A0React-Native/"/>
     <id>http://alonprince.github.io/2015/04/08/学习React-Native/</id>
     <published>2015-04-08T15:13:01.000Z</published>
-    <updated>2015-04-09T02:26:48.000Z</updated>
+    <updated>2015-04-09T02:30:59.000Z</updated>
     <content type="html"><![CDATA[<p>本文为学习<code>React Native</code>的笔记整理而成，仅做个人备忘使用</p>
 <h1 id="样式">样式</h1>
 <h2 id="声明样式">声明样式</h2>
@@ -35,14 +35,14 @@
 <figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">View</span> <span class="attribute">style</span>=<span class="value">{[styles.base,</span> <span class="attribute">styles.background</span>]} /&gt;</span></div></pre></figure>
 
 <p>你可以在其间做一些判断</p>
-<figure class="highlight"><pre><div class="line">&lt;View style={[style.<span class="keyword">base</span>, <span class="keyword">this</span>.state.active && styles.active]} /&gt;</div></pre></figure>
+<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">View</span> <span class="attribute">style</span>=<span class="value">{[style.base,</span> <span class="attribute">this.state.active</span> && <span class="attribute">styles.active</span>]} /&gt;</span></div></pre></figure>
 
 <p>如果非到不得已的情况，你还可以在style中添加对象，但这特别容易混淆，不建议你这么做</p>
-<figure class="highlight"><pre><div class="line">&lt;View style={[styles.<span class="keyword">base</span>, {</div><div class="line">    width: <span class="keyword">this</span>.state.width,</div><div class="line">    height: <span class="keyword">this</span>.state.width * <span class="keyword">this</span>.state.aspectRatio</div><div class="line">}]} /&gt;</div></pre></figure>
+<figure class="highlight html"><pre><div class="line"><span class="tag">&lt;<span class="title">View</span> <span class="attribute">style</span>=<span class="value">{[styles.base,</span> {</span></div><div class="line">    <span class="attribute">width:</span> <span class="attribute">this.state.width</span>,</div><div class="line">    <span class="attribute">height:</span> <span class="attribute">this.state.width</span> * <span class="attribute">this.state.aspectRatio</span></div><div class="line">}]} /&gt;</div></pre></figure>
 
 <h2 id="传递style">传递style</h2>
 <p>为了使你指定的样式在你的组件中使用，你需要传递style，使用<code>View.propTypes.style</code>和<code>Text.propTypes.style</code>来传递，注意，你需要确认传递的仅可能是样式</p>
-<figure class="highlight"><pre><div class="line">var List = React.createClass({</div><div class="line">  propTypes: {</div><div class="line">    style: View.propTypes.style,</div><div class="line">    elementStyle: View.propTypes.style,</div><div class="line">  },</div><div class="line">  render: <span class="keyword">function</span>() {</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style={this.props.style}&gt;</div><div class="line">        {elements.map((element) =&gt;</div><div class="line">          &lt;View style={[styles.element, this.props.elementStyle]} /&gt;</div><div class="line">        )}</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  }</div><div class="line">});</div><div class="line"></div><div class="line">// <span class="keyword">...</span> <span class="keyword">in</span> another file <span class="keyword">...</span></div><div class="line">&lt;List style={styles.list} elementStyle={styles.listElement} /&gt;</div></pre></figure>
+<figure class="highlight html"><pre><div class="line">var List = React.createClass({</div><div class="line">  propTypes: {</div><div class="line">    style: View.propTypes.style,</div><div class="line">    elementStyle: View.propTypes.style,</div><div class="line">  },</div><div class="line">  render: function() {</div><div class="line">    return (</div><div class="line">      <span class="tag">&lt;<span class="title">View</span> <span class="attribute">style</span>=<span class="value">{this.props.style}</span>&gt;</span></div><div class="line">        {elements.map((element) =&gt;</div><div class="line">          <span class="tag">&lt;<span class="title">View</span> <span class="attribute">style</span>=<span class="value">{[styles.element,</span> <span class="attribute">this.props.elementStyle</span>]} /&gt;</span></div><div class="line">        )}</div><div class="line">      <span class="tag">&lt;/<span class="title">View</span>&gt;</span></div><div class="line">    );</div><div class="line">  }</div><div class="line">});</div><div class="line"></div><div class="line">// ... in another file ...</div><div class="line"><span class="tag">&lt;<span class="title">List</span> <span class="attribute">style</span>=<span class="value">{styles.list}</span> <span class="attribute">elementStyle</span>=<span class="value">{styles.listElement}</span> /&gt;</span></div></pre></figure>
 
 <h1 id="手势响应系统">手势响应系统</h1>
 <p>在手机上，手势响应比web上要复杂的多。一个触控可能经历好几个阶段才能定义出用于的意图。例如，app需要判定这个操作是在控件上上下滑动还是左右侧滑或是触碰。并且这些操作可能在操作的过程中更改，甚至存在多点触控的情况。</p>
